@@ -14,11 +14,11 @@ document.addEventListener('DOMContentLoaded', () => {
     let isAudioEnabled = false;
     const synth = window.speechSynthesis;
 
-    // Pre-load voices (Chrome loads them async)
+    // Pre-load voices (Chrome loads them async via onvoiceschanged)
     let cachedVoices = [];
     const loadVoices = () => { cachedVoices = synth.getVoices(); };
+    synth.onvoiceschanged = loadVoices;
     loadVoices();
-    synth.addEventListener('voiceschanged', loadVoices);
 
     if (audioToggleBtn) {
         audioToggleBtn.addEventListener('click', () => {
@@ -63,16 +63,19 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!isAudioEnabled) return resolve();
 
             const utterance = new SpeechSynthesisUtterance(text);
-            const enVoices = cachedVoices.filter(v => v.lang.startsWith('en'));
+            const voices = cachedVoices.length ? cachedVoices : synth.getVoices();
+            const enVoices = voices.filter(v => v.lang.startsWith('en'));
 
             if (role === 'AI Agent') {
                 utterance.pitch = 1.15;
                 utterance.rate = 0.9;
-                utterance.voice = enVoices.find(v => v.name.includes('Google')) || enVoices[0] || null;
+                const v = enVoices.find(v => v.name.includes('Google')) || enVoices[0];
+                if (v) utterance.voice = v;
             } else if (role === 'Clinic') {
                 utterance.pitch = 0.85;
                 utterance.rate = 1.0;
-                utterance.voice = enVoices[1] || enVoices[0] || null;
+                const v = enVoices[1] || enVoices[0];
+                if (v) utterance.voice = v;
             } else if (role === 'IVR') {
                 utterance.pitch = 0.5;
                 utterance.rate = 0.85;
