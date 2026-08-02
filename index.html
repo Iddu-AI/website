@@ -1632,6 +1632,36 @@
       transition: opacity 0.22s ease;
     }
 
+    @keyframes muteRing {
+      0%   { box-shadow: 0 0 0 0 rgba(255,255,255,0.55); }
+      70%  { box-shadow: 0 0 0 10px rgba(255,255,255,0); }
+      100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); }
+    }
+    #unmute-btn.is-muted { animation: muteRing 1.8s ease-out infinite; }
+    #unmute-btn { transition: transform 0.15s ease; }
+    #unmute-btn:hover { transform: scale(1.12); }
+
+    #unmute-hint {
+      position: absolute;
+      bottom: 54px;
+      right: 6px;
+      background: rgba(0,0,0,0.72);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      padding: 5px 11px;
+      border-radius: 20px;
+      white-space: nowrap;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.15);
+      pointer-events: none;
+      opacity: 1;
+      transition: opacity 0.5s ease;
+    }
+    #unmute-hint.hidden { opacity: 0; }
+
     /* ── Video Scrubber ─────────────────── */
     .video-scrubber-wrap {
       width: 100%;
@@ -2545,7 +2575,8 @@
         <div class="scenario-phone-wrap">
           <div class="phone-frame" id="scenario-phone-frame">
             <div id="demo-video" class="demo-iframe"></div>
-            <button id="unmute-btn" onclick="toggleMute()" title="Toggle sound" style="position:absolute;bottom:10px;right:10px;z-index:10;background:rgba(0,0,0,0.65);border:1px solid rgba(255,255,255,0.25);border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;color:#fff;backdrop-filter:blur(4px);">🔇</button>
+            <div id="unmute-hint">👆 Tap to hear</div>
+            <button id="unmute-btn" class="is-muted" onclick="toggleMute()" title="Toggle sound" style="position:absolute;bottom:10px;right:10px;z-index:10;background:rgba(0,0,0,0.65);border:1px solid rgba(255,255,255,0.25);border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;color:#fff;backdrop-filter:blur(4px);">🔇</button>
           </div>
         </div>
         <!-- Scrubber -->
@@ -3352,16 +3383,25 @@
     function toggleMute() {
       if (!ytPlayer || typeof ytPlayer.isMuted !== 'function') return;
       const btn = document.getElementById('unmute-btn');
+      const hint = document.getElementById('unmute-hint');
       if (isMuted) {
         ytPlayer.unMute(); ytPlayer.setVolume(100);
         isMuted = false;
-        if (btn) btn.textContent = '🔊';
+        if (btn) { btn.textContent = '🔊'; btn.classList.remove('is-muted'); }
+        if (hint) hint.classList.add('hidden');
       } else {
         ytPlayer.mute();
         isMuted = true;
-        if (btn) btn.textContent = '🔇';
+        if (btn) { btn.textContent = '🔇'; btn.classList.add('is-muted'); }
+        if (hint) hint.classList.remove('hidden');
       }
     }
+
+    // Auto-hide hint after 5s
+    setTimeout(() => {
+      const hint = document.getElementById('unmute-hint');
+      if (hint && isMuted) hint.classList.add('hidden');
+    }, 5000);
 
     function playScenario(el) {
       if (el.classList.contains('active')) return;
