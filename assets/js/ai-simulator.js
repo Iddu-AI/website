@@ -20,6 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
             audioToggleBtn.style.color = isAudioEnabled ? '#ffffff' : 'rgba(255,255,255,0.5)';
             audioToggleBtn.style.borderColor = isAudioEnabled ? 'rgba(255,255,255,0.5)' : 'rgba(255,255,255,0.2)';
             audioToggleBtn.style.background = isAudioEnabled ? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.08)';
+            if (isAudioEnabled) {
+                window.speechSynthesis.cancel();
+                window.speechSynthesis.speak(new SpeechSynthesisUtterance('Voice enabled'));
+            }
         });
     }
 
