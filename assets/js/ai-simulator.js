@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const startBtn = document.getElementById('start-sim-btn');
     const complexBtn = document.getElementById('start-complex-sim-btn');
     const transcript = document.getElementById('sim-transcript');
-    const audioToggleBtn = document.querySelector('.audio-toggle');
+    const audioToggleBtn = document.getElementById('audio-toggle-btn');
     
     if (!transcript) return;
 
@@ -21,15 +21,13 @@ document.addEventListener('DOMContentLoaded', () => {
     synth.addEventListener('voiceschanged', loadVoices);
 
     if (audioToggleBtn) {
-        audioToggleBtn.style.cursor = 'pointer';
-        audioToggleBtn.title = 'Toggle voice audio';
         audioToggleBtn.addEventListener('click', () => {
             isAudioEnabled = !isAudioEnabled;
-            audioToggleBtn.querySelector('span').textContent = isAudioEnabled ? '🔊 Audio On' : '🔇 Audio Off';
-            audioToggleBtn.style.opacity = isAudioEnabled ? '1' : '0.5';
+            audioToggleBtn.textContent = isAudioEnabled ? '🔊 Voice On' : '🔇 Voice Off';
+            audioToggleBtn.style.color = isAudioEnabled ? '#ffffff' : 'rgba(255,255,255,0.5)';
+            audioToggleBtn.style.borderColor = isAudioEnabled ? 'rgba(255,255,255,0.5)' : 'rgba(255,255,255,0.2)';
+            audioToggleBtn.style.background = isAudioEnabled ? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.08)';
         });
-        audioToggleBtn.style.opacity = '0.5';
-        audioToggleBtn.querySelector('span').textContent = '🔇 Audio Off';
     }
 
     const scenarios = {
@@ -64,10 +62,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return new Promise((resolve) => {
             if (!isAudioEnabled) return resolve();
 
-            // Chrome requires cancel() before a new speak, and resume() if paused
-            synth.cancel();
-            synth.resume();
-
             const utterance = new SpeechSynthesisUtterance(text);
             const enVoices = cachedVoices.filter(v => v.lang.startsWith('en'));
 
@@ -86,9 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             utterance.onend = resolve;
             utterance.onerror = () => resolve();
-
-            // Small delay needed by Chrome before speak() after cancel()
-            setTimeout(() => synth.speak(utterance), 50);
+            synth.speak(utterance);
         });
     };
 
