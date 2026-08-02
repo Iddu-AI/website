@@ -15,15 +15,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const synth = window.speechSynthesis;
 
     if (audioToggleBtn) {
-        // Audio toggle is currently disabled
-        audioToggleBtn.style.opacity = '0.4';
-        audioToggleBtn.style.cursor = 'default';
-        audioToggleBtn.title = 'Audio coming soon';
-        audioToggleBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            // Intentionally disabled
+        audioToggleBtn.style.cursor = 'pointer';
+        audioToggleBtn.title = 'Toggle voice audio';
+        audioToggleBtn.addEventListener('click', () => {
+            isAudioEnabled = !isAudioEnabled;
+            audioToggleBtn.querySelector('span').textContent = isAudioEnabled ? '🔊 Audio On' : '🔇 Audio Off';
+            audioToggleBtn.style.opacity = isAudioEnabled ? '1' : '0.5';
         });
+        audioToggleBtn.style.opacity = '0.5';
+        audioToggleBtn.querySelector('span').textContent = '🔇 Audio Off';
     }
 
     const scenarios = {
