@@ -2545,6 +2545,7 @@
         <div class="scenario-phone-wrap">
           <div class="phone-frame" id="scenario-phone-frame">
             <div id="demo-video" class="demo-iframe"></div>
+            <button id="unmute-btn" onclick="toggleMute()" title="Toggle sound" style="position:absolute;bottom:54px;right:12px;z-index:10;background:rgba(0,0,0,0.65);border:1px solid rgba(255,255,255,0.25);border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;color:#fff;backdrop-filter:blur(4px);">🔇</button>
           </div>
         </div>
         <!-- Scrubber -->
@@ -3347,6 +3348,21 @@
       document.addEventListener('mouseup', () => { if (isScrubbing) doSeek(); });
     })();
 
+    let isMuted = true;
+    function toggleMute() {
+      if (!ytPlayer || typeof ytPlayer.isMuted !== 'function') return;
+      const btn = document.getElementById('unmute-btn');
+      if (isMuted) {
+        ytPlayer.unMute(); ytPlayer.setVolume(100);
+        isMuted = false;
+        if (btn) btn.textContent = '🔊';
+      } else {
+        ytPlayer.mute();
+        isMuted = true;
+        if (btn) btn.textContent = '🔇';
+      }
+    }
+
     function playScenario(el) {
       if (el.classList.contains('active')) return;
       document.querySelectorAll('.ring-chip, .ring-center').forEach(c => c.classList.remove('active'));
@@ -3358,7 +3374,6 @@
       setTimeout(() => {
         if (ytPlayer && typeof ytPlayer.loadVideoById === 'function') {
           ytPlayer.loadVideoById(videoId);
-          ytPlayer.mute();
         } else {
           const iframe = document.getElementById('demo-video');
           iframe.src = 'https://www.youtube-nocookie.com/embed/' + videoId
