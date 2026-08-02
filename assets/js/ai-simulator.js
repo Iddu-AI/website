@@ -54,41 +54,40 @@ document.addEventListener('DOMContentLoaded', () => {
         ]
     };
 
-    /**
-     * Hybrid Speech Logic:
-     * 1. Try playing premium pre-recorded MP3
-     * 2. Fall back to SpeechSynthesis if MP3 is missing
-     */
     const speakLine = (scenarioKey, index, text, role) => {
         return new Promise((resolve) => {
             if (!isAudioEnabled) return resolve();
 
-            const audioPath = `assets/audio/${scenarioKey}/line_${index}.mp3`;
-            const audio = new Audio(audioPath);
+            const utterance = new SpeechSynthesisUtterance(text);
 
-            audio.oncanplaythrough = () => {
-                audio.play();
-                audio.onended = resolve;
-            };
-
-            audio.onerror = () => {
-                // Fallback to Live Synthesis
-                const utterance = new SpeechSynthesisUtterance(text);
+            const speak = () => {
                 const voices = synth.getVoices();
-                
+                const enVoices = voices.filter(v => v.lang.startsWith('en'));
+
                 if (role === 'AI Agent') {
-                    utterance.pitch = 1.1;
-                    utterance.voice = voices.find(v => v.lang.includes('en') && v.name.includes('Google')) || voices[0];
+                    utterance.pitch = 1.15;
+                    utterance.rate = 0.95;
+                    utterance.voice = enVoices.find(v => v.name.includes('Google')) || enVoices[0] || null;
                 } else if (role === 'Clinic') {
-                    utterance.pitch = 0.9;
+                    utterance.pitch = 0.85;
+                    utterance.rate = 1.0;
+                    utterance.voice = enVoices[1] || enVoices[0] || null;
                 } else if (role === 'IVR') {
                     utterance.pitch = 0.5;
+                    utterance.rate = 0.9;
                 }
 
                 utterance.onend = resolve;
                 utterance.onerror = resolve;
                 synth.speak(utterance);
             };
+
+            const voices = synth.getVoices();
+            if (voices.length > 0) {
+                speak();
+            } else {
+                synth.addEventListener('voiceschanged', speak, { once: true });
+            }
         });
     };
 
