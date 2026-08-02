@@ -14,6 +14,12 @@ document.addEventListener('DOMContentLoaded', () => {
     let isAudioEnabled = false;
     const synth = window.speechSynthesis;
 
+    // Pre-load voices (Chrome loads them async)
+    let cachedVoices = [];
+    const loadVoices = () => { cachedVoices = synth.getVoices(); };
+    loadVoices();
+    synth.addEventListener('voiceschanged', loadVoices);
+
     if (audioToggleBtn) {
         audioToggleBtn.style.cursor = 'pointer';
         audioToggleBtn.title = 'Toggle voice audio';
@@ -58,36 +64,31 @@ document.addEventListener('DOMContentLoaded', () => {
         return new Promise((resolve) => {
             if (!isAudioEnabled) return resolve();
 
+            // Chrome requires cancel() before a new speak, and resume() if paused
+            synth.cancel();
+            synth.resume();
+
             const utterance = new SpeechSynthesisUtterance(text);
+            const enVoices = cachedVoices.filter(v => v.lang.startsWith('en'));
 
-            const speak = () => {
-                const voices = synth.getVoices();
-                const enVoices = voices.filter(v => v.lang.startsWith('en'));
-
-                if (role === 'AI Agent') {
-                    utterance.pitch = 1.15;
-                    utterance.rate = 0.95;
-                    utterance.voice = enVoices.find(v => v.name.includes('Google')) || enVoices[0] || null;
-                } else if (role === 'Clinic') {
-                    utterance.pitch = 0.85;
-                    utterance.rate = 1.0;
-                    utterance.voice = enVoices[1] || enVoices[0] || null;
-                } else if (role === 'IVR') {
-                    utterance.pitch = 0.5;
-                    utterance.rate = 0.9;
-                }
-
-                utterance.onend = resolve;
-                utterance.onerror = resolve;
-                synth.speak(utterance);
-            };
-
-            const voices = synth.getVoices();
-            if (voices.length > 0) {
-                speak();
-            } else {
-                synth.addEventListener('voiceschanged', speak, { once: true });
+            if (role === 'AI Agent') {
+                utterance.pitch = 1.15;
+                utterance.rate = 0.9;
+                utterance.voice = enVoices.find(v => v.name.includes('Google')) || enVoices[0] || null;
+            } else if (role === 'Clinic') {
+                utterance.pitch = 0.85;
+                utterance.rate = 1.0;
+                utterance.voice = enVoices[1] || enVoices[0] || null;
+            } else if (role === 'IVR') {
+                utterance.pitch = 0.5;
+                utterance.rate = 0.85;
             }
+
+            utterance.onend = resolve;
+            utterance.onerror = () => resolve();
+
+            // Small delay needed by Chrome before speak() after cancel()
+            setTimeout(() => synth.speak(utterance), 50);
         });
     };
 
@@ -96,7 +97,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const runSimulation = async (scenarioKey) => {
         if (isRunning) return;
         isRunning = true;
-        
+        synth.cancel();
+
         const scenario = scenarios[scenarioKey];
         const activeBtn = scenarioKey === 'standard' ? startBtn : complexBtn;
         const otherBtn = scenarioKey === 'standard' ? complexBtn : startBtn;
