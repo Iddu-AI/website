@@ -2,44 +2,42 @@
 
 **Format:** Personal story → What it is
 **Length:** ~90 seconds
-**Tone:** Direct, confident, genuine — no fluff, no hype
+**Tone:** Quiet, personal, then convicted — no hype, no performance
 **Staging:** On camera the entire time. No demo. Just you.
 
 ---
 
-## STAGE 1 — The Problem (on camera, slow and deliberate)
+## STAGE 1 — The Story (quiet, personal, slow)
 
-> "Managing your health is one of the most important things you do."
+> "My mom never complains. She just absorbs."
 
-> "And somehow — it's still a complete mess."
+> "She was on hold for fifteen minutes just to reschedule a dentist appointment — standing at the counter, mouthing 'sorry' to me every time I passed. Like she was inconveniencing me by taking care of us."
 
-> "You miss appointments. You forget to call back. You spend fifteen minutes on hold just to change a time. You're standing at the front desk looking for an insurance card buried somewhere in your bag. You're trying to remember when your last physical was — and you genuinely can't."
+> "A few weeks later she got a fifty dollar no-show fee. For an appointment that slipped while she was managing everyone else's lives."
 
-> "Your doctor has notes. Your insurance has records. Your confirmation emails are somewhere. But none of it is connected. None of it talks to each other. And none of it actually helps you in the moment when you need it."
+> "She just paid it. Didn't call back. Didn't fight it. Quietly absorbed it — and moved on."
 
-> "Nobody designed it this way on purpose. It just happened — because nobody stopped to rebuild it."
+*(pause. hold.)*
 
-*(one breath. pause.)*
-
-> "I did."
+> "That quiet is what got me."
 
 ---
 
-## STAGE 2 — Who I Am + What I Built (energy shifts — confident, not arrogant)
+## STAGE 2 — The Answer (shift — direct, convicted)
 
-> "My name is Agastya Munnangi. I'm a high school student."
+> "I'm a teenager. I can't fix the system."
 
-> "And I built iddu."
+> "But if AI can write code and generate images — it can make a phone call."
 
-> "iddu is an AI-powered app that manages everything around your family's health appointments — so you don't have to."
+*(beat)*
 
-> "It calls your doctor's office on your behalf. It reads your confirmation emails and turns them into appointments automatically. It stores your visit notes, your costs, your insurance cards, your family's full schedule. And it answers questions about all of it — instantly."
+> "My name is Agastya Munnangi. I'm a high school student. And I built iddu."
 
-> "I didn't build this for a grade. I built this because I watched the people around me struggling with something that should have been solved a long time ago."
+> "iddu calls your doctor's office on your behalf. It reads your confirmation emails and turns them into appointments automatically. It manages your family's entire schedule, stores your visit notes, your insurance cards, your costs — and answers questions about all of it, instantly."
 
-> "And I thought — if nobody's going to fix this, I will."
+> "I built it for my mom. And for every parent out there carrying this weight — without ever asking for help."
 
-*(direct to camera, no smile, just conviction)*
+*(direct to camera, no smile)*
 
 > "This is iddu."
 
@@ -47,9 +45,10 @@
 
 ## Production Notes
 
-- **Do not rush Stage 1.** Each line is its own moment. Let the problems land one at a time — the viewer should be nodding along before you say a word about the solution.
-- **The pause before "I did."** — this is the most important beat in the entire script. Full stop. One breath. Eye contact. That single line carries the whole setup.
-- **"I'm a high school student"** — say it plainly. No emphasis, no pride, no apology. Just a fact. The understatement is what makes it hit.
-- **Stage 2 pace** — slightly faster than Stage 1, but not rushed. You've earned the right to move forward.
-- **Final line "This is iddu."** — no music swell, no fade. Just say it and hold. Let the silence do the work.
-- **Wardrobe / setting** — clean, minimal. The words are the visual. Don't distract from them.
+- **Stage 1 is everything.** Speak slowly. Every sentence is its own breath. Do not rush the mom story — if the viewer doesn't feel it, Stage 2 means nothing.
+- **"That quiet is what got me."** — full stop. This is the emotional hinge. Pause here longer than feels comfortable. That silence is part of the delivery.
+- **"I'm a teenager. I can't fix the system."** — say it plainly. No self-pity, no humor. Just honest.
+- **"But if AI can write code and generate images — it can make a phone call."** — this is the line. Slight pause before it. Let it land completely before moving on. Do not undersell it.
+- **"My name is Agastya Munnangi. I'm a high school student."** — still flat, still matter-of-fact. The understatement is the power.
+- **Final line "This is iddu."** — no music, no fade. Hold eye contact. Let the silence close it.
+- **Wardrobe / setting** — clean, minimal. Nothing competing with the words.
