@@ -8,6 +8,24 @@
   <meta name="description"
     content="Iddu is your real-world AI agent that manages appointments, scans forwarded emails, understands voice input, and calls offices to reschedule on your behalf." />
 
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Iddu",
+    "operatingSystem": "iOS",
+    "applicationCategory": "LifestyleApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "4.99",
+      "priceCurrency": "USD"
+    },
+    "description": "Your personal AI that manages wellness appointments, calls offices to reschedule, scans wellness documents, and coordinates care for your entire family.",
+    "url": "https://iddu.app"
+  }
+  </script>
+
   <!-- Theme and Icons -->
   <meta name="theme-color" content="#020617" />
   <link rel="icon" type="image/png" href="favicon.png" />
@@ -47,6 +65,9 @@
       margin: 0;
       padding: 0;
     }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { overflow-x: hidden; }
 
     body {
       background-color: var(--bg-base);
@@ -109,6 +130,8 @@
       border: 1px solid var(--glass-border);
       border-radius: 100px;
       transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      box-sizing: border-box;
+      overflow: visible;
     }
 
     header.scrolled {
@@ -179,15 +202,34 @@
       padding: 0 2rem;
     }
 
-    /* Hero Section */
+    /* Hero Section — text left, features right */
     .hero {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 4rem;
-      min-height: 100vh;
+      min-height: auto;
       padding-top: 8rem;
-      align-items: center;
+      padding-bottom: 3rem;
+      align-items: start;
     }
+
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      padding-top: 3rem;
+    }
+
+    .hero-right .ticker-container {
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 1rem;
+      border-top: 1px solid var(--glass-border);
+      padding-top: 2rem;
+      margin-top: 0;
+    }
+
+    .hero-right .ticker-item { text-align: left; flex: 1; }
 
     .hero-content h1 {
       font-size: 4rem;
@@ -201,6 +243,51 @@
       color: var(--text-secondary);
       margin-bottom: 2.5rem;
       max-width: 500px;
+    }
+
+    /* ── Features + Trust 2-col section ── */
+    .features-trust-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      padding: 3.5rem 0 4rem;
+      border-top: 1px solid var(--glass-border);
+      align-items: start;
+    }
+
+    .ft-right .ticker-container {
+      flex-direction: column;
+      gap: 2rem;
+      justify-content: flex-start;
+    }
+
+    .ft-right .ticker-item {
+      text-align: left;
+    }
+
+    /* ── Demo Split 2-col section ── */
+    .demo-split-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      padding: 3.5rem 0 4rem;
+      border-top: 1px solid var(--glass-border);
+      align-items: center;
+    }
+
+    .ds-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      overflow: hidden; /* prevent galaxy from causing horizontal scroll */
+    }
+
+    .ds-right {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
     }
 
     /* Hero Mini Features */
@@ -258,11 +345,18 @@
     }
 
     .demo-iframe {
-      width: 340px;
-      height: 740px;
+      width: 272px;
+      height: 592px;
       border: none;
       border-radius: 36px;
       background: #0a0a0f;
+      display: block;
+      overflow: hidden;
+    }
+    .demo-iframe iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
       display: block;
     }
 
@@ -353,12 +447,12 @@
     /* CTA Section */
     .cta-section {
       text-align: center;
-      padding: 6rem 2rem;
+      padding: 4rem 2.5rem;
       margin: 8rem auto 0;
       background: linear-gradient(145deg, rgba(56, 189, 248, 0.05), rgba(168, 85, 247, 0.05));
       border: 1px solid var(--glass-border);
       border-radius: 32px;
-      max-width: 800px;
+      max-width: 1040px;
     }
 
     .cta-section h2 {
@@ -427,6 +521,619 @@
       margin-top: 1rem;
     }
 
+    /* ── Two-Column CTA Layout ── */
+    .cta-intro { margin-bottom: 2.5rem; }
+
+    .cta-duo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      text-align: left;
+    }
+
+    .cta-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 20px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+    }
+
+    .cta-card-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.67rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 100px;
+      width: fit-content;
+    }
+
+    .badge-blue {
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--brand-blue);
+      border: 1px solid rgba(56, 189, 248, 0.22);
+    }
+
+    .badge-purple {
+      background: rgba(168, 85, 247, 0.1);
+      color: var(--brand-purple);
+      border: 1px solid rgba(168, 85, 247, 0.22);
+    }
+
+    .cta-card h3 {
+      font-size: 1.45rem;
+      color: #fff;
+      margin-bottom: 0.4rem;
+      letter-spacing: -0.01em;
+    }
+
+    /* Override broad .cta-section p inside cards */
+    .cta-card p {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      margin-bottom: 0;
+      line-height: 1.65;
+    }
+
+    .cta-card .privacy-note {
+      font-size: 0.72rem;
+      color: rgba(255, 255, 255, 0.35);
+      text-align: center;
+      margin-top: 0.25rem;
+    }
+
+    .cta-card .cta-form {
+      max-width: none;
+      margin: 0;
+      gap: 0.7rem;
+    }
+
+    .input-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.7rem;
+    }
+
+    .cta-card .cta-form input,
+    .cta-card .cta-form textarea {
+      width: 100%;
+      padding: 0.85rem 1.1rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      color: #fff;
+      font-size: 0.92rem;
+      font-family: inherit;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+
+    .cta-card .cta-form input:focus,
+    .cta-card .cta-form textarea:focus {
+      outline: none;
+      border-color: rgba(168, 85, 247, 0.55);
+      box-shadow: 0 0 0 2px rgba(168, 85, 247, 0.12);
+    }
+
+    .cta-card .cta-form input::placeholder,
+    .cta-card .cta-form textarea::placeholder { color: rgba(255, 255, 255, 0.32); }
+
+    .cta-card .cta-form textarea {
+      resize: vertical;
+      min-height: 108px;
+      line-height: 1.5;
+    }
+
+    .btn-cta-blue {
+      background: linear-gradient(135deg, #38bdf8, #6d28d9);
+      color: #fff;
+      border: none;
+      padding: 0.9rem 1.5rem;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      width: 100%;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-cta-purple {
+      background: linear-gradient(135deg, #a855f7, #ec4899);
+      color: #fff;
+      border: none;
+      padding: 0.9rem 1.5rem;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      width: 100%;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-cta-blue:hover  { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(56,189,248,0.25); }
+    .btn-cta-purple:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(168,85,247,0.25); }
+
+    /* Vertical divider between the two cards on desktop */
+    .cta-divider {
+      width: 1px;
+      background: var(--glass-border);
+      align-self: stretch;
+      display: none; /* shown via grid gap instead */
+    }
+
+    @media (max-width: 780px) {
+      .cta-duo { grid-template-columns: 1fr; }
+    }
+
+    /* === Hero Rotator === */
+    .hero-slides {
+      display: grid;
+    }
+
+    .hero-slide {
+      grid-area: 1 / 1;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+      pointer-events: none;
+    }
+
+    .hero-slide.active {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .hero-feature-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: 100px;
+      padding: 6px 16px;
+      margin-bottom: 0.85rem;
+      transition: box-shadow 0.3s;
+    }
+
+    /* 📞 AI Calling — cyan blue */
+    .tag-blue {
+      color: #7dd3fc;
+      background: linear-gradient(135deg, rgba(56,189,248,0.18), rgba(14,165,233,0.08));
+      border: 1px solid rgba(56,189,248,0.5);
+      box-shadow: 0 0 16px rgba(56,189,248,0.22), inset 0 0 10px rgba(56,189,248,0.07);
+    }
+
+    /* 👨‍👩‍👧‍👦 Family Mode — violet purple */
+    .tag-purple {
+      color: #c084fc;
+      background: linear-gradient(135deg, rgba(168,85,247,0.2), rgba(139,92,246,0.08));
+      border: 1px solid rgba(168,85,247,0.5);
+      box-shadow: 0 0 16px rgba(168,85,247,0.22), inset 0 0 10px rgba(168,85,247,0.07);
+    }
+
+    /* 🧾 Bill Intelligence — emerald green */
+    .tag-green {
+      color: #6ee7b7;
+      background: linear-gradient(135deg, rgba(52,211,153,0.18), rgba(16,185,129,0.08));
+      border: 1px solid rgba(52,211,153,0.48);
+      box-shadow: 0 0 16px rgba(52,211,153,0.2), inset 0 0 10px rgba(52,211,153,0.06);
+    }
+
+    /* ✨ Daily Digest — amber gold */
+    .tag-amber {
+      color: #fcd34d;
+      background: linear-gradient(135deg, rgba(251,191,36,0.18), rgba(245,158,11,0.08));
+      border: 1px solid rgba(251,191,36,0.48);
+      box-shadow: 0 0 16px rgba(251,191,36,0.2), inset 0 0 10px rgba(251,191,36,0.06);
+    }
+
+    /* 💬 Conversational AI — fuchsia pink */
+    .tag-pink {
+      color: #f0abfc;
+      background: linear-gradient(135deg, rgba(232,121,249,0.18), rgba(168,85,247,0.08));
+      border: 1px solid rgba(232,121,249,0.48);
+      box-shadow: 0 0 16px rgba(232,121,249,0.2), inset 0 0 10px rgba(232,121,249,0.06);
+    }
+
+    /* 👋 Meet Iddu — warm rose */
+    .tag-rose {
+      color: #fda4af;
+      background: linear-gradient(135deg, rgba(251,113,133,0.18), rgba(244,63,94,0.08));
+      border: 1px solid rgba(251,113,133,0.48);
+      box-shadow: 0 0 16px rgba(251,113,133,0.2), inset 0 0 10px rgba(251,113,133,0.06);
+    }
+
+    /* === Pronunciation Slide — dictionary entry style === */
+    .hero-content .hero-feature-tag { margin-bottom: 0.6rem; }
+
+    .dict-entry {
+      margin-bottom: 0.55rem;
+    }
+
+    .dict-word-logo {
+      display: block;
+      height: clamp(4.5rem, 11vw, 7.5rem);
+      width: auto;
+      margin: 0 0 -0.9rem;
+      filter: drop-shadow(0 0 18px rgba(34, 211, 238, 0.35)) drop-shadow(0 0 36px rgba(168, 85, 247, 0.25));
+    }
+
+    .dict-entry .dict-phonetic {
+      font-size: 1.05rem;
+      color: rgba(255, 255, 255, 0.38);
+      font-style: italic;
+      margin: 0 0 0.15rem;
+      letter-spacing: 0.06em;
+    }
+
+    .dict-entry .dict-meaning {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.68);
+      font-style: italic;
+      margin: 0;
+      letter-spacing: 0.01em;
+    }
+
+    .hero-sub {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      line-height: 1.65;
+      margin-top: 0.6rem;
+      max-width: 520px;
+    }
+
+    .hero-dots {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      margin-top: 0.9rem;
+    }
+
+    .hero-dot {
+      height: 7px;
+      width: 7px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.18);
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.35s, width 0.35s;
+    }
+
+    .hero-dot.active {
+      background: var(--brand-blue);
+      width: 22px;
+    }
+
+    /* === TestFlight Badge & Waitlist Count === */
+    .hero-social-proof {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      margin-top: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .testflight-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 12px;
+      padding: 9px 16px;
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .testflight-btn:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.24); }
+    .testflight-btn svg { flex-shrink: 0; }
+
+    .tf-sub {
+      display: block;
+      font-size: 0.62rem;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .tf-main {
+      display: block;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .waitlist-count {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 14px;
+      background: rgba(56,189,248,0.07);
+      border: 1px solid rgba(56,189,248,0.18);
+      border-radius: 100px;
+    }
+
+    .wl-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--brand-blue);
+      animation: snp-pulse 2s infinite;
+    }
+
+    .wl-num {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--brand-blue);
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .wl-label {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.55);
+    }
+
+    /* === How It Works === */
+    .how-section {
+      padding: 5rem 2rem;
+      text-align: center;
+      border-top: 1px solid var(--glass-border);
+    }
+
+    .how-subtitle {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      margin-top: 0.5rem;
+    }
+
+    .how-steps {
+      display: grid;
+      grid-template-columns: 1fr 40px 1fr 40px 1fr;
+      align-items: center;
+      max-width: 900px;
+      margin: 3rem auto 0;
+    }
+
+    .how-step {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      height: 100%;
+    }
+
+    .how-step-icon { font-size: 2rem; line-height: 1; }
+
+    .how-step-num {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(56,189,248,0.2), rgba(168,85,247,0.3));
+      border: 1px solid rgba(168,85,247,0.45);
+      color: var(--brand-purple);
+      font-size: 0.75rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .how-step-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      margin: 0;
+    }
+
+    .how-step-desc {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    .how-arrow {
+      text-align: center;
+      color: rgba(168,85,247,0.4);
+      font-size: 1.5rem;
+    }
+
+    @media (max-width: 680px) {
+      .how-steps {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+      .how-arrow { transform: rotate(90deg); padding: 0.25rem 0; font-size: 1.2rem; }
+    }
+
+    /* === Testimonials === */
+    .testimonials-section {
+      padding: 4rem 2rem;
+      text-align: center;
+      border-top: 1px solid var(--glass-border);
+    }
+
+    .testimonials-note {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.28);
+      margin-top: 0.5rem;
+      font-style: italic;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      max-width: 1000px;
+      margin: 2.5rem auto 0;
+      text-align: left;
+    }
+
+    .testimonial-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .t-stars { color: #f59e0b; font-size: 0.88rem; letter-spacing: 2px; }
+
+    .t-quote {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.78);
+      line-height: 1.7;
+      margin: 0;
+      flex: 1;
+      font-style: italic;
+    }
+
+    .t-author { display: flex; align-items: center; gap: 10px; }
+
+    .t-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--brand-blue), var(--brand-purple));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .t-name { font-size: 0.88rem; font-weight: 700; color: #fff; margin: 0; }
+    .t-role { font-size: 0.74rem; color: var(--text-secondary); margin: 0; }
+
+    @media (max-width: 720px) {
+      .testimonials-grid { grid-template-columns: 1fr; }
+    }
+
+    /* === Founder Story === */
+    .founder-section {
+      padding: 3rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .founder-card {
+      background: linear-gradient(135deg, rgba(56,189,248,0.05), rgba(168,85,247,0.09));
+      border: 1px solid rgba(168,85,247,0.22);
+      border-radius: 24px;
+      padding: 2.5rem;
+      display: flex;
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    .founder-emoji { font-size: 2.8rem; flex-shrink: 0; line-height: 1; padding-top: 0.15rem; }
+
+    .founder-text h3 {
+      font-size: 1.25rem;
+      color: #fff;
+      margin: 0 0 0.9rem;
+      line-height: 1.45;
+      letter-spacing: -0.01em;
+    }
+
+    .founder-text p {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.72;
+      margin: 0 0 0.65rem;
+    }
+
+    .founder-text p:last-child { margin-bottom: 0; }
+
+    .founder-sig { color: rgba(255,255,255,0.68) !important; font-style: italic; font-weight: 600; }
+    .founder-sig a {
+      color: inherit;
+      text-decoration: none;
+      background: linear-gradient(90deg, #38bdf8, #a855f7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-style: normal;
+      font-weight: 700;
+      transition: opacity 0.2s;
+    }
+    .founder-sig a:hover { opacity: 0.8; }
+    .founder-sig a::after {
+      content: ' ↗';
+      font-size: 0.75em;
+      -webkit-text-fill-color: transparent;
+      background: linear-gradient(90deg, #38bdf8, #a855f7);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+
+    @media (max-width: 600px) {
+      .founder-card { flex-direction: column; gap: 0.75rem; }
+    }
+
+    /* === FAQ === */
+    .faq-section {
+      padding: 4rem 2rem;
+      max-width: 740px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .faq-list { margin-top: 2.5rem; text-align: left; }
+
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); }
+
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 0.97rem;
+      font-weight: 600;
+      font-family: inherit;
+      padding: 1.2rem 0;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      text-align: left;
+      transition: color 0.2s;
+    }
+
+    .faq-q:hover { color: var(--brand-blue); }
+    .faq-chevron { font-size: 1.35rem; font-weight: 300; color: var(--brand-purple); flex-shrink: 0; transition: transform 0.25s; }
+    .faq-q.open .faq-chevron { transform: rotate(45deg); }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.72;
+      transition: max-height 0.32s ease, padding-bottom 0.32s ease;
+      padding-bottom: 0;
+    }
+
+    .faq-a.open { max-height: 220px; padding-bottom: 1.25rem; }
+
     /* Footer */
     footer {
       background: #090e17;
@@ -434,6 +1141,272 @@
       padding: 4rem 2rem;
       margin-top: 6rem;
       text-align: center;
+    }
+
+    /* Nav links */
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+    .nav-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: #fff; }
+
+    /* Beta CTA button in hero */
+    .btn-beta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: linear-gradient(135deg, var(--brand-blue), var(--brand-purple));
+      color: #fff;
+      text-decoration: none;
+      padding: 0.9rem 2rem;
+      border-radius: 14px;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-top: 2rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(168,85,247,0.3);
+    }
+    .btn-beta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(168,85,247,0.45);
+    }
+    .iddu-icon {
+      height: 20px;
+      width: auto;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 2px;
+      filter: drop-shadow(0 0 4px rgba(168,85,247,0.5));
+    }
+    .btn-beta-sub {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-top: 0.6rem;
+    }
+
+    /* Pain Points section */
+    .pain-section {
+      padding: 6rem 0 4rem;
+      text-align: center;
+    }
+
+    .pain-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 640px;
+      margin: 3rem auto 0;
+    }
+
+    @keyframes pain-pulse {
+      0%, 100% { border-left-color: rgba(248,113,113,0.7); box-shadow: -3px 0 10px rgba(239,68,68,0.1), 0 2px 12px rgba(239,68,68,0.05); }
+      50%       { border-left-color: #ef4444;               box-shadow: -4px 0 22px rgba(239,68,68,0.32), 0 2px 16px rgba(239,68,68,0.1); }
+    }
+
+    .pain-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      background: rgba(239,68,68,0.04);
+      border: 1px solid rgba(239,68,68,0.13);
+      border-left: 3px solid #f87171;
+      border-radius: 16px;
+      padding: 1.4rem 1.75rem;
+      transition: transform 0.3s ease, background 0.3s;
+      animation: pain-pulse 3.5s ease-in-out infinite;
+    }
+
+    .pain-card:nth-child(1) { animation-delay: 0s; }
+    .pain-card:nth-child(2) { animation-delay: 0.7s; }
+    .pain-card:nth-child(3) { animation-delay: 1.4s; }
+    .pain-card:nth-child(4) { animation-delay: 2.1s; }
+    .pain-card:nth-child(5) { animation-delay: 2.8s; }
+
+    .pain-card:hover {
+      transform: translateX(6px);
+      background: rgba(239,68,68,0.09);
+    }
+
+    .pain-emoji {
+      font-size: 2rem;
+      flex-shrink: 0;
+      line-height: 1.2;
+      filter: drop-shadow(0 0 6px rgba(239,68,68,0.3));
+    }
+
+    .pain-card-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .pain-card-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 0.3rem;
+    }
+
+    .pain-card-desc {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.55;
+      margin: 0 0 0.55rem;
+    }
+
+    .pain-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: #fca5a5;
+      background: rgba(239,68,68,0.13);
+      border: 1px solid rgba(239,68,68,0.28);
+      border-radius: 100px;
+      padding: 3px 10px;
+      letter-spacing: 0.02em;
+    }
+
+    /* Resolution callout */
+    .pain-resolution {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      max-width: 620px;
+      margin: 2.5rem auto 0;
+      background: linear-gradient(135deg, rgba(56,189,248,0.07), rgba(168,85,247,0.07));
+      border: 1px solid rgba(168,85,247,0.25);
+      border-radius: 20px;
+      padding: 1.75rem 2rem;
+      text-align: left;
+    }
+
+    .pain-resolution-icon {
+      font-size: 2.25rem;
+      flex-shrink: 0;
+    }
+
+    .pain-resolution-text {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.4;
+      margin: 0;
+    }
+
+    .pain-resolution-text span {
+      background: linear-gradient(135deg, var(--brand-blue), var(--brand-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Persona grid */
+    .persona-section { padding: 4rem 0 5rem; }
+    .persona-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .persona-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 2rem;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .persona-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(168,85,247,0.35);
+    }
+    .persona-emoji { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+    .persona-title { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem; color: #fff; }
+    .persona-desc { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5; }
+
+    /* Pricing section */
+    .pricing-section { padding: 5rem 0; border-top: 1px solid var(--glass-border); }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .pricing-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 2.5rem 2rem;
+      position: relative;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .pricing-card:hover { transform: translateY(-5px); }
+    .pricing-card.popular {
+      border-color: rgba(168,85,247,0.5);
+      background: linear-gradient(145deg, rgba(168,85,247,0.08), rgba(56,189,248,0.04));
+    }
+    .pricing-popular-badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, var(--brand-blue), var(--brand-purple));
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 16px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    .pricing-tier { font-size: 1.1rem; font-weight: 700; color: var(--text-secondary); margin-bottom: 1rem; }
+    .pricing-price {
+      font-family: 'Outfit';
+      font-size: 3rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1;
+    }
+    .pricing-period { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem; }
+    .pricing-features { list-style: none; margin-bottom: 2rem; display: flex; flex-direction: column; gap: 0.6rem; }
+    .pricing-features li {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.75);
+      padding-left: 1.4rem;
+      position: relative;
+    }
+    .pricing-features li::before { content: '✓'; position: absolute; left: 0; color: var(--brand-blue); font-weight: 700; }
+    .pricing-trial { font-size: 0.8rem; color: #7bc67e; font-weight: 600; margin-top: -0.5rem; margin-bottom: 1.5rem; }
+    .btn-pricing {
+      width: 100%;
+      padding: 0.9rem;
+      border-radius: 12px;
+      border: none;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.15);
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-pricing:hover { background: rgba(255,255,255,0.14); transform: translateY(-1px); }
+    .pricing-card.popular .btn-pricing {
+      background: linear-gradient(135deg, var(--brand-blue), var(--brand-purple));
+      border: none;
     }
 
     .footer-links {
@@ -459,25 +1432,500 @@
       font-size: 0.8rem;
     }
 
-    /* Responsive */
+    /* ── Responsive: Tablet (≤968px) ──────────────────── */
     @media (max-width: 968px) {
-      .hero {
+      .hero { padding-top: 6rem; }
+      .hero-content h1 { font-size: 3rem; }
+
+      .features-trust-section { grid-template-columns: 1fr; gap: 2.5rem; }
+      .ft-right .ticker-container { flex-direction: row; flex-wrap: wrap; gap: 2rem; }
+      .ft-right .ticker-item { text-align: left; }
+
+      .demo-split-section { grid-template-columns: 1fr; }
+
+      .pipeline-grid { grid-template-columns: repeat(2, 1fr); }
+
+      .pricing-grid { grid-template-columns: 1fr; max-width: 420px; }
+
+      .persona-grid { grid-template-columns: repeat(2, 1fr); }
+
+      .btn-beta { display: block; text-align: center; }
+    }
+
+    /* ── Responsive: Mobile (≤640px) ──────────────────── */
+    @media (max-width: 640px) {
+      /* Nav: logo only + compact CTA button */
+      header {
+        top: 0.5rem;
+        left: 0.75rem;
+        right: 0.75rem;
+        width: auto;
+        transform: none;
+        border-radius: 18px;
+      }
+      .nav-inner {
+        padding: 0.6rem 1rem;
+        gap: 0.5rem;
+      }
+      .brand { gap: 0.5rem; flex-shrink: 1; min-width: 0; }
+      .logo { height: 28px; }
+      .phonetics { display: none; } /* hide /aɪ duː/ entirely */
+      .nav-links { gap: 0; flex-shrink: 0; }
+      .nav-link { display: none; }
+      .contact-btn {
+        padding: 0.4rem 0.75rem;
+        font-size: 0.78rem;
+        white-space: nowrap;
+        border-radius: 14px;
+      }
+
+      /* Hero */
+      .hero { padding-top: 5rem; gap: 2rem; grid-template-columns: 1fr; }
+      .hero-right .ticker-container { flex-direction: row; flex-wrap: nowrap; justify-content: space-between; gap: 0.5rem; border-top: 1px solid var(--glass-border); padding-top: 1.5rem; }
+      .hero-right .ticker-item { flex: 1; min-width: 0; }
+      .hero-right .ticker-item > div { white-space: nowrap; }
+      .hero-right .ticker-value { font-size: 1.4rem !important; }
+      .hero-right .ticker-item > div > span:not(.ticker-value) { font-size: 0.9rem !important; }
+      /* Conversational section: text first, phone below on mobile */
+      .conv-section { display: flex !important; flex-direction: column; }
+      .conv-section .hero-content { order: 1; }
+      .conv-section .phone-wrapper { order: 2; align-self: center; }
+      .hero-content h1 { font-size: 2.2rem; letter-spacing: -0.02em; }
+      .hero-content p { font-size: 1rem; }
+      .btn-beta { font-size: 0.95rem; padding: 0.85rem 1.5rem; }
+      .btn-beta-sub { font-size: 0.75rem; }
+
+      /* Phone demo frame */
+      .demo-iframe { width: 224px; height: 488px; }
+
+      /* Section titles */
+      .section-title { font-size: 1.9rem; margin: 3rem 0 2rem; }
+      .ai-gallery-title { font-size: 1.9rem; margin-bottom: 2rem; }
+
+      /* Tickers */
+      .ticker-container { gap: 1.5rem; flex-wrap: wrap; }
+      .ticker-value { font-size: 2rem; }
+
+      /* Pain points */
+      .pain-section { padding: 3rem 0 2rem; }
+      .pain-grid { max-width: 100%; }
+      .pain-card { padding: 1.25rem; }
+      .pain-resolution { flex-direction: column; text-align: center; padding: 1.5rem; gap: 0.75rem; }
+      .pain-resolution-text { font-size: 1.05rem; }
+
+      /* Personas */
+      .persona-section { padding: 2.5rem 0 3rem; }
+      .persona-grid { grid-template-columns: 1fr; }
+      .persona-card { padding: 1.5rem; }
+
+      /* Pipeline: force single column */
+      .pipeline-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.25rem;
+        max-width: 420px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .pipeline-grid::after { display: none; }
+      .pipeline-step {
+        padding: 1.5rem 1.25rem 1.25rem;
+        display: block;
+      }
+      .pipeline-step .fb-icon {
+        font-size: 2rem !important;
+        margin-bottom: 0.75rem !important;
+      }
+
+      /* Features grid */
+      .features-grid { grid-template-columns: 1fr; }
+      .feature-box { padding: 1.75rem; }
+
+      /* Gallery */
+      .gallery-item { flex: 0 0 260px; }
+      .gallery-img-frame { height: 380px; }
+
+      /* Pricing */
+      .pricing-section { padding: 3rem 0; }
+      .pricing-grid {
         grid-template-columns: 1fr;
-        text-align: center;
-        padding-top: 6rem;
+        max-width: 100%;
+        padding: 0 0.5rem;
       }
+      .pricing-card { padding: 2rem 1.5rem; }
+      .pricing-price { font-size: 2.5rem; }
 
-      .hero-content p {
-        margin: 0 auto 2.5rem;
-      }
+      /* Simulator */
+      .simulator-ui { min-height: 300px; padding: 1.25rem; }
+      #start-sim-btn, #start-complex-sim-btn { font-size: 0.85rem; }
 
-      .highlight-card {
-        text-align: left;
-      }
+      /* CTA */
+      .cta-section { padding: 3.5rem 1.25rem; border-radius: 20px; }
+      .cta-section h2 { font-size: 1.9rem; }
 
-      .hero-content h1 {
-        font-size: 3rem;
-      }
+      /* Footer */
+      .footer-links { flex-direction: column; gap: 1rem; }
+
+      /* General container padding */
+      .container { padding: 0 1.25rem; }
+    }
+
+    /* ── Responsive: Small Mobile (≤380px) ────────────── */
+    @media (max-width: 380px) {
+      .hero-content h1 { font-size: 1.9rem; }
+      .demo-iframe { width: 192px; height: 416px; }
+      .pipeline-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ===== SCENARIO DEMO SYSTEM ===== */
+    .scenario-demo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .snp-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(168, 85, 247, 0.08);
+      border: 1px solid rgba(168, 85, 247, 0.22);
+      border-radius: 100px;
+      padding: 5px 16px 5px 10px;
+      font-size: 0.73rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.8);
+      max-width: 340px;
+      overflow: hidden;
+    }
+
+    .snp-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--brand-purple);
+      flex-shrink: 0;
+      box-shadow: 0 0 8px var(--brand-purple);
+      animation: pulse 2s infinite;
+    }
+
+    .snp-playing-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--brand-purple);
+      flex-shrink: 0;
+    }
+
+    .snp-title {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .scenario-phone-wrap {
+      position: relative;
+    }
+
+    #scenario-phone-frame {
+      transition: opacity 0.22s ease;
+    }
+
+    @keyframes muteRing {
+      0%   { box-shadow: 0 0 0 0 rgba(255,255,255,0.55); }
+      70%  { box-shadow: 0 0 0 10px rgba(255,255,255,0); }
+      100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); }
+    }
+    #unmute-btn.is-muted { animation: muteRing 1.8s ease-out infinite; }
+    #unmute-btn { transition: transform 0.15s ease; }
+    #unmute-btn:hover { transform: scale(1.12); }
+
+    #unmute-hint {
+      position: absolute;
+      bottom: 54px;
+      right: 6px;
+      background: rgba(0,0,0,0.72);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      padding: 5px 11px;
+      border-radius: 20px;
+      white-space: nowrap;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.15);
+      pointer-events: none;
+      opacity: 1;
+      transition: opacity 0.5s ease;
+    }
+    #unmute-hint.hidden { opacity: 0; }
+
+    /* ── Video Scrubber ─────────────────── */
+    .video-scrubber-wrap {
+      width: 100%;
+      max-width: 290px;
+      padding: 14px 18px 12px;
+      background: rgba(10, 10, 30, 0.72);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 22px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255,255,255,0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .video-scrubber {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 4px;
+      border-radius: 999px;
+      outline: none;
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.12);
+      transition: height 0.15s;
+    }
+    .video-scrubber:hover { height: 5px; }
+
+    .video-scrubber::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.4), 0 0 14px rgba(34, 211, 238, 0.55);
+      cursor: grab;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .video-scrubber:active::-webkit-slider-thumb {
+      cursor: grabbing;
+      transform: scale(1.3);
+      box-shadow: 0 0 0 5px rgba(34, 211, 238, 0.5), 0 0 22px rgba(34, 211, 238, 0.7);
+    }
+    .video-scrubber::-moz-range-thumb {
+      width: 15px; height: 15px;
+      border-radius: 50%;
+      background: #fff;
+      border: none;
+      box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.4), 0 0 14px rgba(34, 211, 238, 0.55);
+      cursor: grab;
+    }
+
+    .scrubber-times {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.65rem;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.05em;
+      color: rgba(255, 255, 255, 0.38);
+    }
+
+    /* ── Radial Orbit Picker ─────────────────── */
+    .radial-picker {
+      position: relative;
+      width: 500px;
+      height: 500px;
+      flex-shrink: 0;
+      contain: layout paint;
+    }
+
+    .ring-track {
+      position: absolute;
+      border-radius: 50%;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .ring-track-outermost {
+      width: 420px; height: 420px;
+      border: 1px solid rgba(245, 158, 11, 0.24);
+      box-shadow: 0 0 10px rgba(245, 158, 11, 0.08), inset 0 0 10px rgba(245, 158, 11, 0.03);
+    }
+
+    .ring-track-outer {
+      width: 296px; height: 296px;
+      border: 1px solid rgba(168, 85, 247, 0.28);
+      box-shadow: 0 0 8px rgba(168, 85, 247, 0.1), inset 0 0 8px rgba(168, 85, 247, 0.04);
+    }
+
+    .ring-track-inner {
+      width: 164px; height: 164px;
+      border: 1px solid rgba(56, 189, 248, 0.22);
+      box-shadow: 0 0 6px rgba(56, 189, 248, 0.08), inset 0 0 6px rgba(56, 189, 248, 0.03);
+    }
+
+    .ring-center {
+      position: absolute;
+      width: 76px; height: 76px;
+      border-radius: 50%;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      background: linear-gradient(135deg, rgba(56,189,248,0.12), rgba(168,85,247,0.22));
+      border: 1.5px solid rgba(168, 85, 247, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      cursor: pointer;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    }
+    .ring-center:hover {
+      transform: translate(-50%, -50%) scale(1.1);
+      border-color: rgba(168, 85, 247, 0.7);
+    }
+    .ring-center.active {
+      border-color: rgba(168, 85, 247, 0.9);
+      animation: center-playing 2s ease-in-out infinite;
+      will-change: filter;
+    }
+
+    @keyframes center-playing {
+      0%, 100% { filter: drop-shadow(0 0 8px rgba(168,85,247,0.45)) drop-shadow(0 0 3px rgba(56,189,248,0.2)); }
+      50%       { filter: drop-shadow(0 0 18px rgba(168,85,247,0.8)) drop-shadow(0 0 9px rgba(56,189,248,0.4)); }
+    }
+
+    @keyframes chip-playing {
+      0%, 100% { filter: drop-shadow(0 0 5px rgba(168,85,247,0.3)); }
+      50%       { filter: drop-shadow(0 0 11px rgba(168,85,247,0.6)) drop-shadow(0 0 4px rgba(56,189,248,0.25)); }
+    }
+
+    .ring-chip {
+      position: absolute;
+      width: 54px; height: 54px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      cursor: pointer;
+      z-index: 5;
+      transition: background 0.2s, border-color 0.2s, box-shadow 0.2s, transform 0.18s cubic-bezier(0.23, 1, 0.32, 1);
+      font-family: 'Inter', system-ui, sans-serif;
+    }
+
+    .ring-chip:hover {
+      background: rgba(168, 85, 247, 0.1);
+      border-color: rgba(168, 85, 247, 0.45);
+      box-shadow: 0 0 16px rgba(168, 85, 247, 0.22);
+      transform: scale(1.5);
+      z-index: 6;
+    }
+
+    .ring-chip.active {
+      background: linear-gradient(135deg, rgba(56,189,248,0.16), rgba(168,85,247,0.2));
+      border-color: rgba(168, 85, 247, 0.72);
+      z-index: 7;
+      animation: chip-playing 2s ease-in-out infinite;
+      will-change: filter;
+    }
+
+    .ring-chip .chip-icon {
+      font-size: 1.1rem;
+      line-height: 1;
+      display: block;
+    }
+
+    .ring-chip .chip-label {
+      font-size: 0.5rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.58);
+      line-height: 1.2;
+      text-align: center;
+      max-width: 46px;
+      overflow-wrap: break-word;
+    }
+
+    .ring-chip.active .chip-label {
+      color: rgba(255, 255, 255, 0.92);
+    }
+
+    /* Hover tooltip (iPhone key-style popup) */
+    .ring-tooltip {
+      position: absolute;
+      width: 148px;
+      background: rgba(8, 8, 20, 0.94);
+      border: 1px solid rgba(168, 85, 247, 0.4);
+      border-radius: 11px;
+      padding: 7px 10px;
+      pointer-events: none;
+      z-index: 20;
+      opacity: 0;
+      transform: scale(0.88);
+      transition: opacity 0.13s ease, transform 0.13s ease;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 4px 18px rgba(0,0,0,0.5);
+    }
+
+    .ring-tooltip.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .rt-title {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 2px;
+      white-space: nowrap;
+    }
+
+    .rt-desc {
+      display: block;
+      font-size: 0.57rem;
+      color: rgba(255, 255, 255, 0.58);
+      line-height: 1.35;
+    }
+
+    /* Bottom hint */
+    .ring-hint {
+      margin-top: 4px;
+      font-size: 0.6rem;
+      color: rgba(255, 255, 255, 0.55);
+      text-align: center;
+      letter-spacing: 0.04em;
+    }
+
+    .ring-hint-accent { color: var(--brand-purple); opacity: 0.65; }
+
+    .galaxy-label {
+      text-align: center;
+      margin-bottom: -6px;
+    }
+    .galaxy-label-title {
+      font-family: 'Outfit', system-ui, sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+      margin: 0 0 4px;
+      letter-spacing: -0.01em;
+    }
+    .galaxy-label-sub {
+      font-size: 0.72rem;
+      color: rgba(255, 255, 255, 0.45);
+      margin: 0;
+      letter-spacing: 0.02em;
+    }
+
+    @media (max-width: 640px) {
+      .ds-left { overflow: hidden; width: 100%; }
+      .demo-split-section { padding: 2rem 0 3rem; gap: 2rem; }
+      .radial-picker { transform: scale(0.72); transform-origin: top center; margin-bottom: -140px; }
+      .snp-badge { max-width: 295px; }
+    }
+    @media (max-width: 380px) {
+      .radial-picker { transform: scale(0.57); transform-origin: top center; margin-bottom: -215px; }
+      .snp-badge { max-width: 241px; }
     }
     /* AI Agent in Action Gallery */
     .ai-gallery-section {
@@ -491,6 +1939,39 @@
       font-size: 2.5rem;
       margin-bottom: 4rem;
       letter-spacing: -0.02em;
+    }
+    .section-tagline {
+      text-align: center;
+      color: var(--text-secondary);
+      width: 100%;
+      box-sizing: border-box;
+      padding: 0 4rem;
+      margin: -1.5rem auto 3rem;
+      line-height: 1.85;
+      font-size: 1.08rem;
+    }
+    .section-tagline .type-cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1em;
+      background: var(--brand-purple);
+      margin-left: 1px;
+      vertical-align: text-bottom;
+      animation: cursor-blink 0.75s step-end infinite;
+    }
+    .section-tagline .type-cursor.done {
+      animation: none;
+      opacity: 0;
+    }
+    @keyframes cursor-blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0; }
+    }
+    @media (max-width: 900px) {
+      .section-tagline { padding: 0 2rem; font-size: 1rem; }
+    }
+    @media (max-width: 600px) {
+      .section-tagline { padding: 0 1.25rem; font-size: 0.93rem; line-height: 1.75; }
     }
 
     .ai-gallery-container {
@@ -584,18 +2065,49 @@
     /* Reveal Animations */
     .reveal {
       opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+      transform: translateY(48px) scale(0.97);
+      transition:
+        opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
     }
 
     .reveal.active {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0) scale(1);
     }
 
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-48px) scale(0.97);
+      transition:
+        opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .reveal-left.active {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+    }
+
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(48px) scale(0.97);
+      transition:
+        opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .reveal-right.active {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.08s; }
+    .reveal-delay-2 { transition-delay: 0.16s; }
+    .reveal-delay-3 { transition-delay: 0.24s; }
+    .reveal-delay-4 { transition-delay: 0.32s; }
+    .reveal-delay-5 { transition-delay: 0.40s; }
 
     /* Ticker UI */
     .ticker-container {
@@ -802,7 +2314,12 @@
           <span class="phonetics-sub">I do it for you.</span>
         </div>
       </div>
-      <a href="mailto:admin@iddu.app" class="contact-btn">Contact Support</a>
+      <nav class="nav-links">
+        <a href="#simulation" class="nav-link">See It Live</a>
+        <a href="#features" class="nav-link">Features</a>
+        <a href="#pricing" class="nav-link">Pricing</a>
+        <a href="#beta-access" class="contact-btn">Get Beta Access</a>
+      </nav>
     </div>
   </header>
 
@@ -810,10 +2327,82 @@
     <!-- Hero Section -->
     <section class="hero">
       <div class="hero-content">
-        <h1 class="reveal">Your Personal AI That <span class="gradient-text">Actually Gets Things Done</span></h1>
-        <p class="reveal reveal-delay-1">Iddu is your Personal Assistant. We manage schedules for busy families like <strong>Alex M.</strong>—organizing provider bills, tracking appointments, and our AI assistant even handles calls to reschedule on your behalf.</p>
+        <div class="reveal">
+          <div class="hero-slides">
 
-        <div class="hero-highlights reveal reveal-delay-2">
+            <div class="hero-slide active">
+              <p class="hero-feature-tag tag-rose">👋 Meet Iddu</p>
+              <div class="dict-entry">
+                <img src="images/iddu-logo.png" alt="iddu" class="dict-word-logo" />
+                <p class="dict-phonetic">/aɪ duː/</p>
+                <p class="dict-meaning">"I do it for you."</p>
+              </div>
+              <p class="hero-sub">That's not just how you say it — that's what it means. Iddu is your personal AI that makes the calls, tracks the appointments, and handles your wellness so you never have to lift a finger.</p>
+            </div>
+
+            <div class="hero-slide">
+              <p class="hero-feature-tag tag-blue">📞 AI Calling</p>
+              <h1>Iddu calls your wellness provider, <span class="gradient-text">so you don't have to.</span></h1>
+              <p class="hero-sub">Our AI navigates phone trees, speaks to real receptionists, and confirms your appointment — all while you live your life.</p>
+            </div>
+
+            <div class="hero-slide">
+              <p class="hero-feature-tag tag-purple">👨‍👩‍👧‍👦 Family Mode</p>
+              <h1>One place for your <span class="gradient-text">whole family's wellness.</span></h1>
+              <p class="hero-sub">Manage schedules, records, and appointments for everyone — spouse, kids, aging parents, and pets — in a single unified view.</p>
+            </div>
+
+            <div class="hero-slide">
+              <p class="hero-feature-tag tag-green">🧾 Bill Intelligence</p>
+              <h1>Iddu decodes every bill <span class="gradient-text">in plain English.</span></h1>
+              <p class="hero-sub">Scan an EOB or office invoice and Iddu breaks down every charge, code, and cost — so you know exactly what you owe and why.</p>
+            </div>
+
+            <div class="hero-slide">
+              <p class="hero-feature-tag tag-amber">✨ Daily Digest</p>
+              <h1>Your wellness, <span class="gradient-text">briefed every morning.</span></h1>
+              <p class="hero-sub">Iddu digests your upcoming appointments, bills, and reminders into a 1-minute daily brief so nothing slips through the cracks.</p>
+            </div>
+
+            <div class="hero-slide">
+              <p class="hero-feature-tag tag-pink">💬 Conversational AI</p>
+              <h1>Just ask. Iddu knows your <span class="gradient-text">wellness inside out.</span></h1>
+              <p class="hero-sub">Ask anything in plain English — "What did I spend last year?", "When is mom's next appointment?" — and get an instant, accurate answer. No digging, no spreadsheets, no guessing.</p>
+            </div>
+
+          </div>
+          <div class="hero-dots">
+            <button class="hero-dot active" onclick="goToHeroSlide(0)"></button>
+            <button class="hero-dot" onclick="goToHeroSlide(1)"></button>
+            <button class="hero-dot" onclick="goToHeroSlide(2)"></button>
+            <button class="hero-dot" onclick="goToHeroSlide(3)"></button>
+            <button class="hero-dot" onclick="goToHeroSlide(4)"></button>
+            <button class="hero-dot" onclick="goToHeroSlide(5)"></button>
+          </div>
+        </div>
+
+        <a href="#beta-access" class="btn-beta reveal reveal-delay-1">
+          Request Private Beta Access
+        </a>
+        <span class="btn-beta-sub reveal reveal-delay-2">Limited spots · Includes 2 months of Premium+ free</span>
+
+        <div class="hero-social-proof reveal reveal-delay-2">
+          <a href="#beta-access" class="testflight-btn">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.05 11.44c-.02-2.78 2.27-4.13 2.37-4.19-1.29-1.89-3.3-2.15-4.02-2.18-1.71-.17-3.34 1.01-4.21 1.01-.87 0-2.21-.98-3.64-.96-1.87.03-3.6 1.09-4.56 2.76-1.95 3.38-.5 8.39 1.4 11.13.93 1.34 2.04 2.85 3.5 2.79 1.41-.06 1.94-.91 3.64-.91 1.7 0 2.18.91 3.66.88 1.52-.03 2.48-1.36 3.4-2.71.68-.97 1.23-2.04 1.6-3.17-3.5-1.33-3.14-5.44-3.14-5.45zM14.2 3.56c.77-.94 1.3-2.25 1.16-3.56-1.12.04-2.47.75-3.27 1.69-.72.82-1.35 2.14-1.18 3.4 1.25.1 2.53-.63 3.29-1.53z" fill="white"/>
+            </svg>
+            <div>
+              <span class="tf-sub">Available on</span>
+              <span class="tf-main">TestFlight for iOS</span>
+            </div>
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Right column: feature cards + trust tickers -->
+      <div class="hero-right">
+        <div class="hero-highlights reveal">
           <div class="highlight-card">
             <span class="icon">✨</span>
             <div>
@@ -833,42 +2422,330 @@
           <div class="highlight-card">
             <span class="icon">📞</span>
             <div>
-              <h3>Autonomous Health Agent</h3>
+              <h3>Autonomous Wellness Voice AI Agent</h3>
               <p>Need to reschedule or tell an office you're running late? Iddu handles the call, the hold time, and the
                 negotiation for you.</p>
             </div>
           </div>
         </div>
-
-        <!-- Capability & Trust Tickers -->
-        <div class="ticker-container reveal reveal-delay-3">
+        <div class="ticker-container reveal">
           <div class="ticker-item">
             <div style="display: flex; align-items: baseline; gap: 2px;">
-              <span class="ticker-value" data-target="256">0</span>
-              <span style="font-family: 'Outfit'; font-size: 1.5rem; font-weight: 800; color: #fff;">-Bit</span>
+              <span style="font-family: 'Outfit'; font-size: 2.5rem; font-weight: 800; color: #fff; line-height:1;">Done</span>
             </div>
-            <span class="ticker-label">Encryption Strength</span>
+            <span class="ticker-label">While You Live Your Life</span>
           </div>
           <div class="ticker-item">
             <div style="display: flex; align-items: baseline; gap: 2px;">
-              <span class="ticker-value" data-target="100">0</span>
-              <span style="font-family: 'Outfit'; font-size: 1.5rem; font-weight: 800; color: #fff;">%</span>
+              <span class="ticker-value">Zero</span>
             </div>
-            <span class="ticker-label">HIPAA Compliant</span>
+            <span class="ticker-label">Data Sold. Ever.</span>
           </div>
           <div class="ticker-item">
             <div style="display: flex; align-items: baseline; gap: 2px;">
-              <span class="ticker-value" data-target="0">0</span>
-              <span style="font-family: 'Outfit'; font-size: 1.5rem; font-weight: 800; color: #fff;">s</span>
+              <span style="font-family: 'Outfit'; font-size: 2.5rem; font-weight: 800; color: #fff; line-height:1;">You</span>
             </div>
-            <span class="ticker-label">Waiting on Hold</span>
+            <span class="ticker-label">Never Wait on Hold</span>
           </div>
         </div>
       </div>
+    </section>
 
-      <div class="phone-wrapper reveal">
-        <div class="phone-frame">
-          <iframe src="demo/voice-agent-demo.html?v=20260412v5" class="demo-iframe" title="Iddu Voice Demo"></iframe>
+    <!-- Demo 2-col section: Galaxy left, Video right -->
+    <section class="demo-split-section">
+      <div class="ds-left reveal">
+        <!-- Galaxy label -->
+        <div class="galaxy-label">
+          <p class="galaxy-label-title">Explore the Feature Galaxy</p>
+          <p class="galaxy-label-sub">Tap any tile to see it live on the right</p>
+        </div>
+
+        <!-- Radial Orbit Picker -->
+        <div class="radial-picker" id="radial-picker">
+
+          <!-- Orbital track rings (decorative) -->
+          <div class="ring-track ring-track-outermost"></div>
+          <div class="ring-track ring-track-outer"></div>
+          <div class="ring-track ring-track-inner"></div>
+
+          <!-- Center glow with Iddu logo -->
+          <div class="ring-center active" data-video="EWtqtoJ0gCU" data-title="Iddu — Your AI Wellness Agent" onclick="playScenario(this)">
+            <img src="images/iddu-logo.png" alt="Iddu" style="width:32px;opacity:0.9;filter:drop-shadow(0 0 7px rgba(168,85,247,0.75))">
+          </div>
+
+          <!-- Inner ring: 7 chips positioned at radius 82px by JS -->
+          <div class="ring-chip" data-video="2QNdwJzCf-Y" data-title="Rescheduling an Appointment" onclick="playScenario(this)">
+            <span class="chip-icon">📅</span><span class="chip-label">Sched</span>
+          </div>
+          <div class="ring-chip" data-video="2QNdwJzCf-Y" data-title="Cancelling an Appointment" onclick="playScenario(this)">
+            <span class="chip-icon">❌</span><span class="chip-label">Cancel</span>
+          </div>
+          <div class="ring-chip" data-video="2QNdwJzCf-Y" data-title="You're Running Late" onclick="playScenario(this)">
+            <span class="chip-icon">🏃</span><span class="chip-label">Late</span>
+          </div>
+          <div class="ring-chip" data-video="2QNdwJzCf-Y" data-title="Booking a New Appointment" onclick="playScenario(this)">
+            <span class="chip-icon">📞</span><span class="chip-label">Book</span>
+          </div>
+          <div class="ring-chip" data-video="2QNdwJzCf-Y" data-title="Requesting a Prescription Refill" onclick="playScenario(this)">
+            <span class="chip-icon">💊</span><span class="chip-label">Rx</span>
+          </div>
+          <div class="ring-chip" data-video="2QNdwJzCf-Y" data-title="Following Up on Lab Results" onclick="playScenario(this)">
+            <span class="chip-icon">🧪</span><span class="chip-label">Lab</span>
+          </div>
+          <div class="ring-chip" data-video="2QNdwJzCf-Y" data-title="Managing Family Appointments" onclick="playScenario(this)">
+            <span class="chip-icon">👨‍👩‍👧</span><span class="chip-label">Family</span>
+          </div>
+
+          <!-- Outer ring: 8 chips positioned at radius 148px by JS -->
+          <div class="ring-chip" data-video="2QNdwJzCf-Y" data-title="Scheduling a Vet Visit" onclick="playScenario(this)">
+            <span class="chip-icon">🐶</span><span class="chip-label">Vet</span>
+          </div>
+          <div class="ring-chip" data-video="2QNdwJzCf-Y" data-title="Verifying Insurance Coverage" onclick="playScenario(this)">
+            <span class="chip-icon">🛡️</span><span class="chip-label">Insure</span>
+          </div>
+          <div class="ring-chip" data-video="2QNdwJzCf-Y" data-title="Scanning a Wellness Bill" onclick="playScenario(this)">
+            <span class="chip-icon">📄</span><span class="chip-label">Scan</span>
+          </div>
+          <div class="ring-chip" data-video="2QNdwJzCf-Y" data-title="Understanding Your Wellness Bill" onclick="playScenario(this)">
+            <span class="chip-icon">💰</span><span class="chip-label">Bill</span>
+          </div>
+          <div class="ring-chip" data-video="2QNdwJzCf-Y" data-title="Getting a Specialist Referral" onclick="playScenario(this)">
+            <span class="chip-icon">🏥</span><span class="chip-label">Refer</span>
+          </div>
+          <div class="ring-chip" data-video="2QNdwJzCf-Y" data-title="Your Morning AI Briefing" onclick="playScenario(this)">
+            <span class="chip-icon">✨</span><span class="chip-label">Brief</span>
+          </div>
+          <div class="ring-chip" data-video="2QNdwJzCf-Y" data-title="Emergency Appointment Handling" onclick="playScenario(this)">
+            <span class="chip-icon">⚡</span><span class="chip-label">Urgent</span>
+          </div>
+          <div class="ring-chip" data-video="2QNdwJzCf-Y" data-title="Wellness Spending Insights" onclick="playScenario(this)">
+            <span class="chip-icon">📊</span><span class="chip-label">Stats</span>
+          </div>
+
+          <!-- Outermost ring: 10 chips positioned at radius 210px by JS -->
+          <div class="ring-chip" data-video="IhFwPPww9Mw" data-title="The Today Tab — Your Appointment Day Hub" onclick="playScenario(this)">
+            <span class="chip-icon">🗓️</span><span class="chip-label">Today</span>
+          </div>
+          <div class="ring-chip" data-video="2QNdwJzCf-Y" data-title="Booking an Eye Exam" onclick="playScenario(this)">
+            <span class="chip-icon">👁️</span><span class="chip-label">Vision</span>
+          </div>
+          <div class="ring-chip" data-video="2QNdwJzCf-Y" data-title="Therapy Session Scheduling" onclick="playScenario(this)">
+            <span class="chip-icon">🧠</span><span class="chip-label">Mind</span>
+          </div>
+          <div class="ring-chip" data-video="2QNdwJzCf-Y" data-title="Vaccination Tracking & Booking" onclick="playScenario(this)">
+            <span class="chip-icon">💉</span><span class="chip-label">Vacc</span>
+          </div>
+          <div class="ring-chip" data-video="2QNdwJzCf-Y" data-title="Physical Therapy Coordination" onclick="playScenario(this)">
+            <span class="chip-icon">🏋️</span><span class="chip-label">Physio</span>
+          </div>
+          <div class="ring-chip" data-video="2QNdwJzCf-Y" data-title="Wellness Records Management" onclick="playScenario(this)">
+            <span class="chip-icon">📋</span><span class="chip-label">Files</span>
+          </div>
+          <div class="ring-chip" data-video="2QNdwJzCf-Y" data-title="Symptom Check-In Before Visit" onclick="playScenario(this)">
+            <span class="chip-icon">🌡️</span><span class="chip-label">Check</span>
+          </div>
+          <div class="ring-chip" data-video="2QNdwJzCf-Y" data-title="Recovery & Wellness Sessions" onclick="playScenario(this)">
+            <span class="chip-icon">🧘</span><span class="chip-label">Calm</span>
+          </div>
+          <div class="ring-chip" data-video="2QNdwJzCf-Y" data-title="In-Home Care Coordination" onclick="playScenario(this)">
+            <span class="chip-icon">🏠</span><span class="chip-label">Home</span>
+          </div>
+          <div class="ring-chip" data-video="2QNdwJzCf-Y" data-title="Annual Checkup Reminders" onclick="playScenario(this)">
+            <span class="chip-icon">🔔</span><span class="chip-label">Remind</span>
+          </div>
+
+          <!-- Hover tooltip -->
+          <div class="ring-tooltip" id="ring-tooltip">
+            <span class="rt-title"></span>
+            <span class="rt-desc"></span>
+          </div>
+
+        </div>
+
+      </div><!-- /ds-left -->
+
+      <!-- Video right column -->
+      <div class="ds-right reveal">
+        <div class="snp-badge">
+          <span class="snp-dot"></span>
+          <span class="snp-playing-label">Now Playing</span>
+          <span class="snp-title" id="snp-title">Iddu — Your AI Wellness Agent</span>
+        </div>
+        <div class="scenario-phone-wrap">
+          <div class="phone-frame" id="scenario-phone-frame">
+            <iframe id="demo-video" class="demo-iframe"
+              src="https://www.youtube-nocookie.com/embed/EWtqtoJ0gCU?autoplay=1&mute=1&loop=1&playlist=EWtqtoJ0gCU&controls=0&rel=0&playsinline=1&enablejsapi=1&origin=https://iddu.app"
+              allow="autoplay; encrypted-media; fullscreen"
+              frameborder="0" allowfullscreen></iframe>
+            <div id="unmute-hint">Tap to hear 👇</div>
+            <button id="unmute-btn" class="is-muted" onclick="toggleMute()" title="Toggle sound" style="position:absolute;bottom:10px;right:10px;z-index:10;background:rgba(0,0,0,0.65);border:1px solid rgba(255,255,255,0.25);border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;color:#fff;backdrop-filter:blur(4px);">🔇</button>
+          </div>
+        </div>
+        <!-- Scrubber -->
+        <div class="video-scrubber-wrap">
+          <input type="range" class="video-scrubber" id="video-scrubber" min="0" max="100" value="0" step="0.1" />
+          <div class="scrubber-times">
+            <span id="scrubber-current">0:00</span>
+            <span id="scrubber-duration">0:00</span>
+          </div>
+        </div>
+      </div><!-- /ds-right -->
+
+    </section><!-- /demo-split-section -->
+
+    <!-- Pain Points Hook Section -->
+    <section class="pain-section">
+      <h2 class="section-title reveal" style="margin: 0 0 0.5rem;">Sound <span class="gradient-text">Familiar?</span></h2>
+      <p class="reveal" style="color: var(--text-secondary); max-width: 500px; margin: 0 auto;">You're not alone. These are the wellness admin problems Iddu was built to eliminate.</p>
+
+      <div class="pain-grid">
+
+        <div class="pain-card reveal">
+          <span class="pain-emoji">😤</span>
+          <div class="pain-card-body">
+            <p class="pain-card-title">Stuck on hold for 25 minutes just to reschedule a single appointment</p>
+            <p class="pain-card-desc">An appointment that should take 10 seconds online somehow requires half your lunch break on hold.</p>
+            <span class="pain-badge">⏱ 25 min wasted</span>
+          </div>
+        </div>
+
+        <div class="pain-card reveal">
+          <span class="pain-emoji">🤯</span>
+          <div class="pain-card-body">
+            <p class="pain-card-title">Another EOB buried in your inbox with no idea what you actually owe</p>
+            <p class="pain-card-desc">Insurance-speak and procedure codes that mean nothing — just a number you're apparently supposed to pay.</p>
+            <span class="pain-badge">📄 Zero clarity</span>
+          </div>
+        </div>
+
+        <div class="pain-card reveal">
+          <span class="pain-emoji">😬</span>
+          <div class="pain-card-body">
+            <p class="pain-card-title">Forgetting to call the office when you're running late</p>
+            <p class="pain-card-desc">You're stuck in traffic, can't call while driving, arrive 8 minutes late, and lose your slot anyway.</p>
+            <span class="pain-badge">❌ Lost your slot</span>
+          </div>
+        </div>
+
+        <div class="pain-card reveal">
+          <span class="pain-emoji">😕</span>
+          <div class="pain-card-body">
+            <p class="pain-card-title">No idea if your deductible's been met or what insurance covered</p>
+            <p class="pain-card-desc">Every year the same guessing game — how much have I actually spent? What's left on the deductible?</p>
+            <span class="pain-badge">💸 Guessing every year</span>
+          </div>
+        </div>
+
+        <div class="pain-card reveal">
+          <span class="pain-emoji">😩</span>
+          <div class="pain-card-body">
+            <p class="pain-card-title">Managing your spouse, kids, and parents across 4 different portals</p>
+            <p class="pain-card-desc">Four logins, four apps, zero unified view. Wellness admin wasn't designed for families.</p>
+            <span class="pain-badge">📱 4 logins, 0 answers</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pain-resolution reveal">
+        <span class="pain-resolution-icon">✅</span>
+        <p class="pain-resolution-text">Iddu handles <span>all of this</span> — automatically, so you never have to think about it again.</p>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-section reveal">
+      <h2 class="section-title" style="margin: 0 0 0.25rem;">How <span class="gradient-text">Iddu Works</span></h2>
+      <p class="how-subtitle">Three steps. Zero hold music.</p>
+      <div class="how-steps">
+        <div class="how-step">
+          <div class="how-step-icon">🗣️</div>
+          <div class="how-step-num">1</div>
+          <h3 class="how-step-title">Tell Iddu What You Need</h3>
+          <p class="how-step-desc">Tap or speak a request. "Reschedule my Tuesday appointment" is all it takes — no forms, no portals.</p>
+        </div>
+        <div class="how-arrow">→</div>
+        <div class="how-step">
+          <div class="how-step-icon">📞</div>
+          <div class="how-step-num">2</div>
+          <h3 class="how-step-title">Iddu Makes the Call</h3>
+          <p class="how-step-desc">Our AI navigates phone trees, speaks with real receptionists, and handles the entire conversation on your behalf.</p>
+        </div>
+        <div class="how-arrow">→</div>
+        <div class="how-step">
+          <div class="how-step-icon">✅</div>
+          <div class="how-step-num">3</div>
+          <h3 class="how-step-title">You Get a Notification</h3>
+          <p class="how-step-desc">A quiet push confirmation lands in your pocket. No hold music, no callback, no stress. It's just handled.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Who Is Iddu For? -->
+    <section class="persona-section reveal">
+      <h2 class="section-title" style="margin: 0 0 0.5rem;">Built for <span class="gradient-text">Real Life</span></h2>
+      <p style="text-align:center; color: var(--text-secondary); max-width: 550px; margin: 0 auto;">Iddu works hardest for people who have no time to waste.</p>
+      <div class="persona-grid">
+        <div class="persona-card">
+          <span class="persona-emoji">👩‍👧‍👦</span>
+          <p class="persona-title">Busy Parents</p>
+          <p class="persona-desc">Juggling pediatrician visits, dental checkups, school physicals, and your own appointments — all while working full time. Iddu keeps everyone's wellness calendar in one place and makes the calls you don't have time for.</p>
+        </div>
+        <div class="persona-card">
+          <span class="persona-emoji">🧓</span>
+          <p class="persona-title">Adults Managing Aging Parents</p>
+          <p class="persona-desc">Coordinating specialist visits, Medicare billing confusion, and follow-up calls for a parent who lives across town. Iddu becomes your remote care coordination hub.</p>
+        </div>
+        <div class="persona-card">
+          <span class="persona-emoji">💼</span>
+          <p class="persona-title">Anyone Who Values Their Time</p>
+          <p class="persona-desc">You earn more per hour than the time you spend on hold. Let Iddu's AI agent handle the administrative overhead of modern wellness so you can focus on what matters.</p>
+        </div>
+        <div class="persona-card">
+          <span class="persona-emoji">🐶</span>
+          <p class="persona-title">Pets Too</p>
+          <p class="persona-desc">Because your furry family members have appointments too. Iddu manages vet visits, vaccination reminders, and wellness checks right alongside your family's wellness — all in one place.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials-section">
+      <h2 class="section-title reveal" style="margin: 0 0 0.25rem;">What Early Members <span class="gradient-text">Are Saying</span></h2>
+      <p class="testimonials-note reveal">Replace these with real beta user quotes as you collect them.</p>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <div class="t-stars">★★★★★</div>
+          <p class="t-quote">"I used to spend my lunch break on hold just to reschedule my kids' dentist appointments. Now Iddu handles it in the background while I'm in a meeting. Life-changing is not an overstatement."</p>
+          <div class="t-author">
+            <div class="t-avatar">SM</div>
+            <div>
+              <p class="t-name">Sarah M.</p>
+              <p class="t-role">Mom of three · Early beta user</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <div class="t-stars">★★★★★</div>
+          <p class="t-quote">"Managing my dad's specialist visits from two states away was exhausting. Iddu coordinates the calls, sends me confirmations, and I finally feel like I have things under control."</p>
+          <div class="t-author">
+            <div class="t-avatar">JT</div>
+            <div>
+              <p class="t-name">James T.</p>
+              <p class="t-role">Long-distance caregiver · Early beta user</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <div class="t-stars">★★★★★</div>
+          <p class="t-quote">"The way it actually talks to receptionists and navigates phone trees — I thought this was years away. The fact that it's built and working right now is genuinely impressive."</p>
+          <div class="t-author">
+            <div class="t-avatar">JH</div>
+            <div>
+              <p class="t-name">Jennifer H.</p>
+              <p class="t-role">Software engineer · Early beta user</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -898,9 +2775,7 @@
                 <button class="btn-primary" id="start-sim-btn" style="flex: 1;">Standard Reschedule</button>
                 <button class="btn-primary" id="start-complex-sim-btn" style="flex: 1; background: linear-gradient(135deg, var(--brand-purple), var(--brand-pink));">Complex IVR Demo</button>
               </div>
-              <div class="audio-toggle" style="margin-left: 1.5rem;">
-                <span>🔊 Audio Sample</span>
-              </div>
+              <button id="audio-toggle-btn" style="margin-left: 1rem; padding: 0.5rem 1rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.5); font-size: 0.8rem; cursor: pointer; white-space: nowrap;">🔇 Voice Off</button>
             </div>
           </div>
         </div>
@@ -915,31 +2790,31 @@
           <div class="step-num">1</div>
           <span class="fb-icon" style="font-size: 2.5rem; margin-bottom: 1.5rem; display: block;">📄</span>
           <h3 class="fb-title">Ingestion</h3>
-          <p class="fb-desc">Scan your Doctor's Office Invoices or EOBs, or forward them directly to your personal Iddu email vault.</p>
+          <p class="fb-desc">Scan your office invoices or EOBs, or forward them directly to your personal Iddu email vault.</p>
         </div>
         <div class="pipeline-step reveal reveal-delay-2">
           <div class="step-num">2</div>
           <span class="fb-icon" style="font-size: 2.5rem; margin-bottom: 1.5rem; display: block;">🧠</span>
           <h3 class="fb-title">Parsing</h3>
-          <p class="fb-desc">Our AI extracts provider data, procedure codes, and due dates with high-precision medical OCR.</p>
+          <p class="fb-desc">Our AI extracts provider data, procedure codes, and due dates with high-precision OCR.</p>
         </div>
         <div class="pipeline-step reveal reveal-delay-3">
           <div class="step-num">3</div>
           <span class="fb-icon" style="font-size: 2.5rem; margin-bottom: 1.5rem; display: block;">📊</span>
           <h3 class="fb-title">Consumable Data</h3>
-          <p class="fb-desc">Iddu breaks down complex medical jargon into a clear, non-medical format that clearly shows what you owe.</p>
+          <p class="fb-desc">Iddu breaks down complex billing jargon into plain English that clearly shows what you owe and why.</p>
         </div>
         <div class="pipeline-step reveal reveal-delay-4">
           <div class="step-num">4</div>
           <span class="fb-icon" style="font-size: 2.5rem; margin-bottom: 1.5rem; display: block;">📈</span>
           <h3 class="fb-title">Financial Insight</h3>
-          <p class="fb-desc">Know your out-of-pocket spending, track your history for tax season, and get total financial peace of mind.</p>
+          <p class="fb-desc">Upload your Explanation of Benefits documents and see the exact cost of every visit — broken down by family member and year.</p>
         </div>
       </div>
     </section>
 
     <!-- Comprehensive Features Grid -->
-    <h2 class="section-title reveal">The Complete <span class="gradient-text">Health Toolchain</span></h2>
+    <h2 class="section-title reveal" id="features">The Complete <span class="gradient-text">Wellness Toolchain</span></h2>
 
     <div class="features-grid">
       <!-- Feature: Daily Digest -->
@@ -960,10 +2835,10 @@
       <div class="feature-box reveal">
         <span class="fb-icon">👨‍👩‍👧‍👦</span>
         <h3 class="fb-title">Family Mode</h3>
-        <p class="fb-desc">Centralized health management for the people who matter most, without sacrificing individual
+        <p class="fb-desc">Centralized wellness management for the people who matter most, without sacrificing individual
           privacy.</p>
         <ul class="fb-list">
-          <li>Multi-member health records</li>
+          <li>Multi-member wellness records</li>
           <li>RBAC (Role-Based Access Control)</li>
           <li>Unified Appointment Timeline</li>
           <li>Shared provider directories</li>
@@ -988,7 +2863,7 @@
       <div class="feature-box reveal">
         <span class="fb-icon">📂</span>
         <h3 class="fb-title">Document Vault</h3>
-        <p class="fb-desc">A localized HQ for every scan, receipt, and medical record you possess, with instant sharing.</p>
+        <p class="fb-desc">A localized HQ for every scan, receipt, and wellness record you possess, with instant sharing.</p>
         <ul class="fb-list">
           <li>Instant PDF Sharing (Email/Text)</li>
           <li>Encrypted record storage</li>
@@ -1010,11 +2885,11 @@
         </ul>
       </div>
 
-      <!-- Feature: The Health Wallet -->
+      <!-- Feature: The Wellness Wallet -->
       <div class="feature-box reveal">
         <span class="fb-icon">💳</span>
-        <h3 class="fb-title">The Health Wallet</h3>
-        <p class="fb-desc">Tame your medical spending. We digest receipts and EOBs to reveal your true out-of-pocket costs.</p>
+        <h3 class="fb-title">The Wellness Wallet</h3>
+        <p class="fb-desc">We process your EOB documents and receipts to show the real cost of every visit, organized by family member and year.</p>
         <ul class="fb-list">
           <li>Aggregate View by Tax Year</li>
           <li>Automatic EOB receipt matching</li>
@@ -1029,7 +2904,7 @@
         <h3 class="fb-title">AI Governance</h3>
         <p class="fb-desc">Built with strict ethical guardrails and AES-256 encryption to ensure your data is secure.</p>
         <ul class="fb-list">
-          <li>HIPAA-Compliant Architecture</li>
+          <li>Zero Data Sold. Ever.</li>
           <li>Enterprise-grade AES-256 Encryption</li>
           <li>Privacy-first hard deletion protocols</li>
           <li>Zero public model training data</li>
@@ -1052,7 +2927,8 @@
 
     <!-- AI Agent in Action Gallery -->
     <section class="ai-gallery-section" id="ai-action">
-      <h2 class="ai-gallery-title">AI Agent <span class="gradient-text">In Action</span></h2>
+      <h2 class="ai-gallery-title reveal">AI Agent <span class="gradient-text">In Action</span></h2>
+      <p class="section-tagline typewriter-tagline">While you're in a meeting or just living your day, Iddu's AI is already on hold for you — navigating phone trees, talking to real receptionists, and booking your appointments — all triggered by a simple voice instruction from you. It handles the back-and-forth, remembers your preferences, and sends a quiet notification the moment it's done. This isn't a chatbot that suggests. It's an agent that acts.</p>
       <div class="ai-gallery-container">
         <!-- Phase 1: Awareness -->
         <div class="gallery-item reveal">
@@ -1102,57 +2978,56 @@
 
     <!-- Family Mode in Action Gallery -->
     <section class="ai-gallery-section" id="family-action" style="background: rgba(168, 85, 247, 0.02); border-bottom: 1px solid var(--glass-border); margin-top: 0;">
-      <h2 class="ai-gallery-title">Family Mode <span class="gradient-text">In Action</span></h2>
+      <h2 class="ai-gallery-title reveal">Family Mode <span class="gradient-text">In Action</span></h2>
+      <p class="section-tagline family-tagline typewriter-tagline">One account covers your entire household — family members, aging parents, and pets included. Each person gets their own profile with custom permissions, and every appointment, reminder, and wellness record stays organized in a single shared view. No more juggling separate apps or missing someone's follow-up.</p>
       <div class="ai-gallery-container">
-        <!-- Phase 1: Onboarding -->
+
+        <!-- Phase 1: Family Dashboard -->
         <div class="gallery-item reveal">
           <div class="gallery-card">
-            <img src="images/gallery/family-add.png" alt="Add Family Member" class="gallery-img" />
+            <div class="gallery-img-frame">
+              <img src="images/gallery/family-masked-1.PNG" alt="Family Dashboard" class="gallery-img" />
+            </div>
             <div class="gallery-label">
-              <h4>1. Unified Onboarding</h4>
-              <p>Easily add spouses, children, or parents. One account, total care coordination for the entire household.</p>
+              <h4>1. The Family Dashboard</h4>
+              <p>Everyone in one place — spouse, children, parents, and pets. Live ACTIVE status for every member at a glance.</p>
             </div>
           </div>
         </div>
 
-        <!-- Phase 2: Oversight -->
+        <!-- Phase 2: Member Management -->
         <div class="gallery-item reveal">
           <div class="gallery-card">
-            <img src="images/gallery/family-list.png" alt="Family Management" class="gallery-img" />
+            <div class="gallery-img-frame">
+              <img src="images/gallery/family-masked-2.PNG" alt="Edit Family Member Profile" class="gallery-img" />
+            </div>
             <div class="gallery-label">
-              <h4>2. Family Oversight</h4>
-              <p>Track the status of every family member in one intuitive dashboard with granular privacy controls.</p>
+              <h4>2. Granular Member Control</h4>
+              <p>Set relationships, link accounts, and grant Co-Owner access with role-based permissions per family member.</p>
             </div>
           </div>
         </div>
 
-        <!-- Phase 3: Appointments -->
+        <!-- Phase 3: Coordinated Appointments -->
         <div class="gallery-item reveal">
           <div class="gallery-card">
-            <img src="images/gallery/family-appointments.png" alt="Family Appointments" class="gallery-img" />
+            <div class="gallery-img-frame">
+              <img src="images/gallery/family-masked-3.PNG" alt="Family Appointments" class="gallery-img" />
+            </div>
             <div class="gallery-label">
-              <h4>3. Coordinated Care</h4>
-              <p>A unified timeline for all family appointments. Toggle between members to see exactly what's next.</p>
+              <h4>3. One Calendar, Every Member</h4>
+              <p>Filter appointments by family member. The AI Agent button is always one tap away for any upcoming visit.</p>
             </div>
           </div>
         </div>
 
-        <!-- Phase 4: Pets -->
-        <div class="gallery-item reveal">
-          <div class="gallery-card">
-            <img src="images/gallery/family-pet-focus.png" alt="Pet Care Feature" class="gallery-img" />
-            <div class="gallery-label">
-              <h4>4. Comprehensive Care</h4>
-              <p>Because family includes pets too. Manage vet visits and wellness checks with the same AI intelligence.</p>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
 
     <!-- World Class Security in Action Gallery -->
     <section class="ai-gallery-section" id="security-action" style="background: rgba(56, 189, 248, 0.02); border-bottom: 1px solid var(--glass-border); margin-top: 0;">
-      <h2 class="ai-gallery-title">World Class Security <span class="gradient-text">In Action</span></h2>
+      <h2 class="ai-gallery-title reveal">World Class Security <span class="gradient-text">In Action</span></h2>
+      <p class="section-tagline typewriter-tagline">Your wellness data is among the most sensitive information you own — and Iddu treats it that way. Every record is encrypted end-to-end with AES-256, protected behind biometric MFA, and built on a zero-data-sold foundation from day one, not bolted on. When you delete something, it's gone — no shadow copies, no model training, no exceptions.</p>
       <div class="ai-gallery-container">
         <!-- Phase 1: Registration -->
         <div class="gallery-item reveal">
@@ -1222,16 +3097,16 @@
     </section>
 
     <!-- AI Chat Demo Section -->
-    <section class="hero" style="padding-top: 4rem; margin-top: 4rem; border-top: 1px solid var(--glass-border);">
-      <div class="phone-wrapper">
+    <section class="hero conv-section" style="padding-top: 4rem; margin-top: 4rem; border-top: 1px solid var(--glass-border);">
+      <div class="phone-wrapper reveal-left">
         <div class="phone-frame">
           <iframe src="demo/ai-chat-demo.html?v=20260412v5" class="demo-iframe" title="Iddu AI Chat Demo"></iframe>
         </div>
       </div>
 
-      <div class="hero-content">
+      <div class="hero-content reveal-right">
         <h1><span class="gradient-text">Conversational Intelligence</span></h1>
-        <p>Iddu doesn't just store your medical history—it understands it. Ask complex questions about your family's
+        <p>Iddu doesn't just store your wellness history—it understands it. Ask complex questions about your family's
           spending, upcoming schedules, and provider history with full RBAC privacy protection.</p>
 
         <div class="hero-highlights">
@@ -1239,8 +3114,7 @@
             <span class="icon">💰</span>
             <div>
               <h3>Financial Analysis</h3>
-              <p>Instantly total your spending across tax years or view out-of-pocket trajectories based on your
-                extracted EOB receipts.</p>
+              <p>See the cost of every visit across all family members — extracted from your EOB documents and summarized by year.</p>
             </div>
           </div>
           <div class="highlight-card">
@@ -1263,26 +3137,159 @@
       </div>
     </section>
 
-    <!-- Early Access CTA Section -->
-    <section class="cta-section">
-      <h2>Get <span class="gradient-text">Early Access</span></h2>
-      <p>Iddu is currently launching in limited capacity. Secure your spot on the waitlist today to let our AI start
-        managing your healthcare logistics.</p>
+    <!-- Pricing Section -->
+    <section class="pricing-section reveal" id="pricing">
+      <h2 class="section-title" style="margin-top: 0;">Simple, <span class="gradient-text">Honest Pricing</span></h2>
+      <p style="text-align:center; color: var(--text-secondary); max-width: 500px; margin: 0 auto 0.5rem;">Every plan includes a <strong style="color:#7bc67e;">7-day free trial</strong>. No credit card required to start.</p>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <p class="pricing-tier">Basic</p>
+          <p class="pricing-price">$4.99</p>
+          <p class="pricing-period">/month</p>
+          <p class="pricing-trial">★ 7-day free trial</p>
+          <ul class="pricing-features">
+            <li>Manual &amp; voice appointment entry</li>
+            <li>AI Agent scheduling calls</li>
+            <li>Quick Actions (reschedule, late, cancel)</li>
+            <li>Insurance Card sharing</li>
+            <li>Smart Email Inbox — forward confirmations, auto-added</li>
+          </ul>
+          <button class="btn-pricing" onclick="document.getElementById('beta-access').scrollIntoView({behavior:'smooth'})">Start Free Trial</button>
+        </div>
+        <div class="pricing-card popular">
+          <span class="pricing-popular-badge">⭐ Most Popular</span>
+          <p class="pricing-tier">Premium</p>
+          <p class="pricing-price">$9.99</p>
+          <p class="pricing-period">/month</p>
+          <p class="pricing-trial">★ 7-day free trial</p>
+          <ul class="pricing-features">
+            <li>Everything in Basic</li>
+            <li>Family Mode (up to 4 members)</li>
+            <li>Wellness Personas &amp; AI context</li>
+            <li>Wellness Card scanning &amp; OCR</li>
+            <li>Smart Start Alerts</li>
+            <li>Wellness Insights &amp; analytics</li>
+          </ul>
+          <button class="btn-pricing" onclick="document.getElementById('beta-access').scrollIntoView({behavior:'smooth'})">Start Free Trial</button>
+        </div>
+        <div class="pricing-card">
+          <p class="pricing-tier">Premium+</p>
+          <p class="pricing-price">$14.99</p>
+          <p class="pricing-period">/month</p>
+          <p class="pricing-trial">★ 7-day free trial</p>
+          <ul class="pricing-features">
+            <li>Everything in Premium</li>
+            <li>AI Call Recording &amp; transcripts</li>
+            <li>Unlimited usage on all features</li>
+            <li>Priority support</li>
+          </ul>
+          <button class="btn-pricing" onclick="document.getElementById('beta-access').scrollIntoView({behavior:'smooth'})">Start Free Trial</button>
+        </div>
+      </div>
+    </section>
 
-      <form class="cta-form" action="https://formsubmit.co/admin@iddu.app" method="POST">
-        <!-- Disable captcha for better UX -->
-        <input type="hidden" name="_captcha" value="false">
-        <!-- Configure auto-response email subject -->
-        <input type="hidden" name="_subject" value="New Early Access Waitlist Signup!">
-        <div class="input-group">
-          <input type="text" name="name" placeholder="Your Full Name" required>
+    <!-- Founder Story -->
+    <section class="founder-section reveal">
+      <p class="hero-feature-tag tag-amber" style="margin-bottom:1.5rem;">💡 Why I Built This</p>
+      <div class="founder-card">
+        <div class="founder-emoji">👋</div>
+        <div class="founder-text">
+          <p>My mom never complains. She just absorbs. That's what makes it hard to watch. She was on hold 15 minutes just to reschedule a dentist appointment — standing at the counter, mouthing "sorry" to me every time I passed, like she was inconveniencing me by taking care of us.</p>
+          <p>When she got a $50 no-show fee a few weeks later — for an appointment that slipped while she was managing everyone else's lives — she just paid it. Didn't call back. Didn't fight it. Quietly absorbed it and moved on.</p>
+          <p>That quiet is what got me. I'm a teenager. I can't fix the system. But if AI can write code and generate images, it can make a phone call. I built Iddu for every parent carrying this weight without ever asking for help.</p>
+          <p class="founder-sig">— <a href="https://agastya191.github.io/" target="_blank" rel="noopener noreferrer">Agasty Munnangi</a>, Co-Founder &amp; Builder of Iddu</p>
         </div>
-        <div class="input-group">
-          <input type="email" name="email" placeholder="Your Email Address" required>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section reveal" id="faq">
+      <h2 class="section-title" style="margin: 0 0 0.25rem;">Common <span class="gradient-text">Questions</span></h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">Does Iddu actually call real offices?<span class="faq-chevron">+</span></button>
+          <div class="faq-a">Yes — Iddu's AI places real phone calls to any wellness provider's office, navigates phone trees, and speaks with actual receptionists, just like you would. The difference is it never gets put on hold in your place.</div>
         </div>
-        <button type="submit" class="btn-primary">Join the Waitlist</button>
-        <p class="privacy-note">🔒 We value your privacy. We never sell your data or send spam.</p>
-      </form>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">Is my personal information safe?<span class="faq-chevron">+</span></button>
+          <div class="faq-a">Absolutely. Every record is encrypted end-to-end with AES-256, protected behind biometric MFA, built on a zero-data-sold foundation from day one. We never sell your data or use it to train models.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">What if the office doesn't pick up?<span class="faq-chevron">+</span></button>
+          <div class="faq-a">Iddu retries automatically at optimal times and notifies you if it can't reach the office after multiple attempts — so you're never left wondering what happened.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">Which types of appointments can Iddu handle?<span class="faq-chevron">+</span></button>
+          <div class="faq-a">Dentists, specialists, therapists, pharmacies, vets — if they have a phone number, Iddu can handle the call. The AI is trained across dozens of office call patterns and wellness categories.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">How much does it cost?<span class="faq-chevron">+</span></button>
+          <div class="faq-a">Plans start at $4.99/month, every plan includes a 7-day free trial with no credit card required. Most users find the Premium plan ($9.99/mo) covers everything they need, including Family Mode for the whole household.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">When can I get access?<span class="faq-chevron">+</span></button>
+          <div class="faq-a">Iddu is currently in private beta on TestFlight for iOS. Request access using the form below — selected early members get 2 months of Premium+ free as a thank-you for helping shape the product.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Beta Access + Partnership Section -->
+    <section class="cta-section" id="beta-access">
+
+      <div class="cta-intro">
+        <h2>Join the <span class="gradient-text">Iddu Mission</span></h2>
+        <p style="color:var(--text-secondary);font-size:1.05rem;max-width:540px;margin:0 auto;">Whether you want to be among the first to experience Iddu, or you want to help build what's next — we'd love to hear from you.</p>
+      </div>
+
+      <div class="cta-duo">
+
+        <!-- LEFT: Beta Access -->
+        <div class="cta-card">
+          <span class="cta-card-badge badge-blue">🔑 Early Access</span>
+          <div>
+            <h3>Request Private Beta</h3>
+            <p class="cta-card-desc">Iddu is in private beta on TestFlight. Selected early members get <strong style="color:#7bc67e;">2 months of Premium+ free</strong> and a direct line to shape the product.</p>
+          </div>
+          <form class="cta-form" action="https://formsubmit.co/admin@iddu.app" method="POST">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_subject" value="New Beta Access Request!">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_next" value="https://iddu.app/#beta-access">
+            <div class="input-row">
+              <input type="text" name="first_name" placeholder="First Name" required>
+              <input type="text" name="last_name" placeholder="Last Name" required>
+            </div>
+            <input type="email" name="email" placeholder="Email Address" required>
+            <textarea name="message" placeholder="What are you hoping to use Iddu for? Share anything — the more context the better." rows="4"></textarea>
+            <button type="submit" class="btn-cta-blue">Request Beta Access →</button>
+            <p class="privacy-note">🔒 Your info is never shared. Limited spots available.</p>
+          </form>
+        </div>
+
+        <!-- RIGHT: Partnership -->
+        <div class="cta-card">
+          <span class="cta-card-badge badge-purple">🤝 Collaborate</span>
+          <div>
+            <h3>Partner With Us</h3>
+            <p class="cta-card-desc">Developer, designer, wellness professional, investor — if you want to help shape the future of AI-powered wellness, we want to hear from you.</p>
+          </div>
+          <form class="cta-form" action="https://formsubmit.co/admin@iddu.app" method="POST">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_subject" value="Partnership Application">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_next" value="https://iddu.app/#beta-access">
+            <div class="input-row">
+              <input type="text" name="first_name" placeholder="First Name" required>
+              <input type="text" name="last_name" placeholder="Last Name" required>
+            </div>
+            <input type="email" name="email" placeholder="Email Address" required>
+            <textarea name="message" placeholder="Tell us about your background, skills, and how you'd like to contribute to Iddu's mission." rows="4" required></textarea>
+            <button type="submit" class="btn-cta-purple">Apply to Partner →</button>
+            <p class="privacy-note">🤝 All inquiries are reviewed personally by the founder.</p>
+          </form>
+        </div>
+
+      </div>
     </section>
 
   </main>
@@ -1299,6 +3306,265 @@
 
   </footer>
 
+  <!-- Scenario Switcher + Radial Orbit Init -->
+  <script>
+    /* ── YouTube IFrame API ── */
+    let ytPlayer = null;
+    let scrubInterval = null;
+    let isScrubbing = false;
+
+    function onYouTubeIframeAPIReady() {
+      ytPlayer = new YT.Player('demo-video', {
+        videoId: 'EWtqtoJ0gCU',
+        host: 'https://www.youtube-nocookie.com',
+        playerVars: {
+          autoplay: 1, mute: 1, controls: 0,
+          rel: 0, playsinline: 1, modestbranding: 1
+        },
+        events: {
+          onReady: function(e) { e.target.mute(); e.target.playVideo(); startScrubSync(); },
+          onStateChange: function(e) {
+            if (e.data === YT.PlayerState.ENDED) { ytPlayer.seekTo(0); ytPlayer.playVideo(); }
+          }
+        }
+      });
+    }
+
+    function startScrubSync() {
+      clearInterval(scrubInterval);
+      scrubInterval = setInterval(() => {
+        if (!ytPlayer || typeof ytPlayer.getDuration !== 'function' || isScrubbing) return;
+        const dur = ytPlayer.getDuration() || 0;
+        const cur = ytPlayer.getCurrentTime() || 0;
+        const pct = dur > 0 ? (cur / dur) * 100 : 0;
+        const scrubber = document.getElementById('video-scrubber');
+        if (scrubber) { scrubber.value = pct; updateScrubFill(pct); }
+        const ce = document.getElementById('scrubber-current');
+        const de = document.getElementById('scrubber-duration');
+        if (ce) ce.textContent = fmtTime(cur);
+        if (de) de.textContent = fmtTime(dur);
+      }, 333);
+    }
+
+    function updateScrubFill(pct) {
+      const s = document.getElementById('video-scrubber');
+      if (!s) return;
+      const mid = pct * 0.55;
+      s.style.background = `linear-gradient(to right,#22d3ee 0%,#a855f7 ${mid}%,#f472b6 ${pct}%,rgba(255,255,255,0.12) ${pct}%)`;
+    }
+
+    function fmtTime(sec) {
+      const m = Math.floor(sec / 60), s = Math.floor(sec % 60);
+      return m + ':' + String(s).padStart(2, '0');
+    }
+
+    (function initScrubberEvents() {
+      const scrubber = document.getElementById('video-scrubber');
+      if (!scrubber) return;
+      scrubber.addEventListener('mousedown', () => { isScrubbing = true; });
+      scrubber.addEventListener('touchstart', () => { isScrubbing = true; }, { passive: true });
+      scrubber.addEventListener('input', () => {
+        const pct = parseFloat(scrubber.value);
+        updateScrubFill(pct);
+        if (ytPlayer && typeof ytPlayer.getDuration === 'function') {
+          const ce = document.getElementById('scrubber-current');
+          if (ce) ce.textContent = fmtTime((pct / 100) * (ytPlayer.getDuration() || 0));
+        }
+      });
+      const doSeek = () => {
+        isScrubbing = false;
+        if (ytPlayer && typeof ytPlayer.seekTo === 'function') {
+          ytPlayer.seekTo((parseFloat(scrubber.value) / 100) * (ytPlayer.getDuration() || 0), true);
+        }
+      };
+      scrubber.addEventListener('change', doSeek);
+      document.addEventListener('mouseup', () => { if (isScrubbing) doSeek(); });
+    })();
+
+    let isMuted = true;
+    function toggleMute() {
+      if (!ytPlayer || typeof ytPlayer.isMuted !== 'function') return;
+      const btn = document.getElementById('unmute-btn');
+      const hint = document.getElementById('unmute-hint');
+      if (isMuted) {
+        ytPlayer.unMute(); ytPlayer.setVolume(100);
+        isMuted = false;
+        if (btn) { btn.textContent = '🔊'; btn.classList.remove('is-muted'); }
+        if (hint) hint.classList.add('hidden');
+      } else {
+        ytPlayer.mute();
+        isMuted = true;
+        if (btn) { btn.textContent = '🔇'; btn.classList.add('is-muted'); }
+        if (hint) hint.classList.remove('hidden');
+      }
+    }
+
+    // Auto-hide hint after 5s
+    setTimeout(() => {
+      const hint = document.getElementById('unmute-hint');
+      if (hint && isMuted) hint.classList.add('hidden');
+    }, 5000);
+
+    function playScenario(el) {
+      if (el.classList.contains('active')) return;
+      document.querySelectorAll('.ring-chip, .ring-center').forEach(c => c.classList.remove('active'));
+      el.classList.add('active');
+      document.getElementById('snp-title').textContent = el.dataset.title;
+      const videoId = el.dataset.video;
+      const frame = document.getElementById('scenario-phone-frame');
+      frame.style.opacity = '0.4';
+      setTimeout(() => {
+        if (ytPlayer && typeof ytPlayer.loadVideoById === 'function') {
+          ytPlayer.loadVideoById(videoId);
+        } else {
+          const iframe = document.getElementById('demo-video');
+          iframe.src = 'https://www.youtube-nocookie.com/embed/' + videoId
+            + '?autoplay=1&mute=1&loop=1&playlist=' + videoId
+            + '&controls=0&rel=0&playsinline=1&enablejsapi=1&origin=https://iddu.app';
+        }
+        frame.style.opacity = '1';
+      }, 220);
+    }
+
+    function initRadialPicker() {
+      const picker = document.getElementById('radial-picker');
+      if (!picker) return;
+      const chips = Array.from(picker.querySelectorAll('.ring-chip'));
+      const cx = 250, cy = 250;
+      const innerChips    = chips.slice(0, 7);
+      const midChips      = chips.slice(7, 15);
+      const outermostChips = chips.slice(15);
+
+      function placeChips(arr, radius) {
+        arr.forEach((chip, i) => {
+          const angleDeg = -90 + i * 360 / arr.length;
+          const rad = angleDeg * Math.PI / 180;
+          chip.style.left = Math.round(cx + radius * Math.cos(rad) - 27) + 'px';
+          chip.style.top  = Math.round(cy + radius * Math.sin(rad) - 27) + 'px';
+        });
+      }
+
+      placeChips(innerChips, 82);
+      placeChips(midChips, 148);
+      placeChips(outermostChips, 210);
+
+      // Placeholder descriptions — replace with real copy later
+      const descs = [
+        'Iddu calls the office to reschedule for you',
+        'Cancel your visit without waiting on hold',
+        'Running late? Iddu notifies the office ahead',
+        'Book new appointments completely hands-free',
+        'AI calls your pharmacy to refill prescriptions',
+        'Get plain-English summaries of lab results',
+        'Manage care for your whole family in one place',
+        'Schedule and manage pet appointments too',
+        'Verify your insurance coverage before a visit',
+        'Snap a bill — Iddu decodes every charge',
+        'Understand exactly what you owe and why',
+        'Get specialist referrals handled automatically',
+        'Daily AI briefing on your upcoming wellness tasks',
+        'Find emergency appointment slots instantly',
+        'Track your wellness spending and trends over time',
+        'Navigate to the clinic, flag you\'re running late, or call ahead — everything you need on appointment day',
+        'Book eye exams and manage vision prescriptions',
+        'Schedule therapy and mental wellness check-ins',
+        'Track vaccinations and book boosters on schedule',
+        'Coordinate physical therapy and rehab sessions',
+        'Organize and retrieve your wellness records anytime',
+        'Log symptoms — Iddu helps prepare your visit notes',
+        'Schedule recovery, massage, and mindfulness sessions',
+        'Arrange in-home nurse or caregiver visits',
+        'Smart reminders for annual checkups and screenings'
+      ];
+      chips.forEach((chip, i) => { chip._desc = descs[i]; });
+
+      // Tooltip — appears in the cardinal direction away from the chip,
+      // never overlapping it (like an iPhone keyboard key popup)
+      const tooltip = document.getElementById('ring-tooltip');
+      if (tooltip) {
+        chips.forEach(chip => {
+          chip.addEventListener('mouseenter', () => {
+            const chipCx = parseFloat(chip.style.left) + 27;
+            const chipCy = parseFloat(chip.style.top)  + 27;
+            const dx = chipCx - cx, dy = chipCy - cy;
+
+            tooltip.querySelector('.rt-title').textContent = chip.querySelector('.chip-label').textContent;
+            tooltip.querySelector('.rt-desc').textContent  = chip._desc;
+
+            // EDGE = visual half-chip at 1.5× scale (27×1.5=40.5) + 10px gap
+            const TW = 148, TH = 50, EDGE = 51;
+            let tleft, ttop;
+
+            if (Math.abs(dx) >= Math.abs(dy)) {
+              // Chip is left/right of center → tooltip appears to that side
+              ttop  = Math.round(chipCy - TH / 2);
+              tleft = dx >= 0
+                ? Math.round(chipCx + EDGE)           // right side of orbit
+                : Math.round(chipCx - EDGE - TW);     // left side of orbit
+            } else {
+              // Chip is above/below center → tooltip appears above or below
+              tleft = Math.round(chipCx - TW / 2);
+              ttop  = dy >= 0
+                ? Math.round(chipCy + EDGE)           // bottom of orbit
+                : Math.round(chipCy - EDGE - TH);     // top of orbit
+            }
+
+            tooltip.style.left = tleft + 'px';
+            tooltip.style.top  = ttop  + 'px';
+            tooltip.classList.add('visible');
+          });
+          chip.addEventListener('mouseleave', () => tooltip.classList.remove('visible'));
+        });
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', initRadialPicker);
+
+    function initHeroRotator() {
+      const slides = Array.from(document.querySelectorAll('.hero-slide'));
+      const dots   = Array.from(document.querySelectorAll('.hero-dot'));
+      if (!slides.length) return;
+      let current = 0, timer;
+
+      function activate(n) {
+        slides[current].classList.remove('active');
+        dots[current].classList.remove('active');
+        current = ((n % slides.length) + slides.length) % slides.length;
+        slides[current].classList.add('active');
+        dots[current].classList.add('active');
+      }
+
+      window.goToHeroSlide = activate;
+
+      function start() { timer = setInterval(() => activate(current + 1), 4500); }
+      function stop()  { clearInterval(timer); }
+
+      const wrap = document.querySelector('.hero-slides');
+      if (wrap) {
+        wrap.addEventListener('mouseenter', stop);
+        wrap.addEventListener('mouseleave', start);
+      }
+      start();
+    }
+
+    document.addEventListener('DOMContentLoaded', initHeroRotator);
+
+    function toggleFaq(btn) {
+      const answer = btn.nextElementSibling;
+      const isOpen = btn.classList.contains('open');
+      document.querySelectorAll('.faq-q.open').forEach(q => {
+        q.classList.remove('open');
+        q.nextElementSibling.classList.remove('open');
+      });
+      if (!isOpen) {
+        btn.classList.add('open');
+        answer.classList.add('open');
+      }
+    }
+  </script>
+
+  <!-- YouTube IFrame API (loads onYouTubeIframeAPIReady automatically) -->
+  <script src="https://www.youtube.com/iframe_api"></script>
   <!-- Custom Scripts -->
   <script src="assets/js/animations.js?v=20260412v5"></script>
   <script src="assets/js/ai-simulator.js?v=20260412v5"></script>

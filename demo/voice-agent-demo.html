@@ -52,11 +52,240 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
-      padding: 0 28px 4px;
+      padding: 0 22px 4px;
       font-size: 14px;
       font-weight: 600;
-      color: rgba(255, 255, 255, 0.6);
+      color: rgba(255, 255, 255, 0.9);
     }
+
+    .status-bar-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 13px;
+    }
+
+    /* ── Avatar row (family members) ── */
+    .avatar-row {
+      display: flex;
+      gap: 10px;
+      padding: 8px 16px 4px;
+      align-items: center;
+    }
+
+    .avatar-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      cursor: pointer;
+    }
+
+    .avatar-circle {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 16px;
+      font-weight: 800;
+      color: white;
+    }
+
+    .avatar-circle.active {
+      background: #3b82f6;
+      border: 2.5px solid #60a5fa;
+    }
+
+    .avatar-circle.inactive {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1.5px solid rgba(255, 255, 255, 0.12);
+      color: rgba(255,255,255,0.7);
+    }
+
+    .avatar-label {
+      font-size: 9px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.5);
+      letter-spacing: 0.3px;
+    }
+
+    /* ── Search bar ── */
+    .search-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 6px 14px 4px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 8px 12px;
+    }
+
+    .search-icon {
+      font-size: 13px;
+      opacity: 0.4;
+    }
+
+    .search-placeholder {
+      flex: 1;
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+    }
+
+    .search-refresh {
+      font-size: 13px;
+      opacity: 0.4;
+    }
+
+    /* ── Modern appointment cards ── */
+    .appt-card-modern {
+      background: #0d0d12;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 18px;
+      margin-bottom: 10px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .appt-card-modern.yellow { border-left: 3.5px solid #c9952c; }
+    .appt-card-modern.red    { border-left: 3.5px solid #c84444; }
+    .appt-card-modern.blue   { border-left: 3.5px solid #3b82f6; }
+
+    .card-main-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 13px 12px 10px 14px;
+    }
+    .appt-date-col {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      min-width: 36px;
+    }
+    .card-content-col {
+      flex: 1;
+      min-width: 0;
+    }
+    .card-title {
+      color: white;
+      font-size: 13.5px;
+      font-weight: 700;
+      margin-bottom: 5px;
+      line-height: 1.3;
+    }
+    .card-meta-row {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 2px;
+      color: rgba(255,255,255,0.38);
+      font-size: 11.5px;
+      line-height: 1.4;
+    }
+    .card-avatar-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      flex-shrink: 0;
+    }
+    .card-avatar-emoji {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 17px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .card-avatar-init {
+      font-size: 9px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.38);
+      letter-spacing: 0.5px;
+    }
+    .card-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.05);
+      margin: 0 12px;
+    }
+    .card-actions-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 9px 12px;
+    }
+    .card-action-btns {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+    .action-icon-btn {
+      color: rgba(255,255,255,0.32);
+      display: flex;
+      align-items: center;
+    }
+    .ai-agent-pill {
+      background: linear-gradient(135deg, #6d28d9, #8b5cf6);
+      color: white;
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 6px 13px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      box-shadow: 0 2px 12px rgba(109,40,217,0.4);
+      white-space: nowrap;
+    }
+    .ai-agent-pill.highlight {
+      animation: pulse-badge 1s ease-in-out;
+      box-shadow: 0 2px 20px rgba(109,40,217,0.65);
+    }
+
+    /* Updated filter chips */
+    .filter-chip-new {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 13px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .filter-chip-new.fc-all  { background: #3b82f6; color: white; }
+    .filter-chip-new.fc-fav  { border: 1px solid rgba(240,180,41,0.4); color: #f0b429; background: rgba(240,180,41,0.07); }
+    .filter-chip-new.fc-hlth { border: 1px solid rgba(244,63,94,0.35); color: #f43f5e; background: rgba(244,63,94,0.06); }
+    .filter-chip-new.fc-work { border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.04); }
+
+    /* FAB */
+    .fab-btn {
+      position: absolute;
+      bottom: 70px;
+      right: 16px;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: #3b82f6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 26px;
+      color: white;
+      font-weight: 300;
+      box-shadow: 0 4px 16px rgba(59,130,246,0.5);
+      z-index: 10;
+      line-height: 1;
+    }
+    .tab-icon-svg { display:flex; justify-content:center; align-items:center; margin-bottom:1px; }
 
     .screen {
       height: calc(100% - 50px);
@@ -75,6 +304,7 @@
       opacity: 0;
       transition: opacity 0.4s ease;
       pointer-events: none;
+      overflow: hidden;
     }
 
     .phase.active {
@@ -877,6 +1107,7 @@
       flex-direction: column;
       padding: 8px 12px;
       overflow: hidden;
+      min-height: 0;
     }
 
     .call-view-header {
@@ -945,6 +1176,7 @@
 
     .call-view-body {
       flex: 1;
+      min-height: 0;
       background: rgba(255, 255, 255, 0.02);
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-top: none;
@@ -1033,12 +1265,86 @@
       font-weight: 600;
     }
 
-    /* Chat bubbles */
+    /* Chat bubbles — voice transcript style */
+    .transcript-pill {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 4px 10px 4px 8px;
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: rgba(255,255,255,0.35);
+      align-self: center;
+      margin-bottom: 2px;
+      flex-shrink: 0;
+    }
+    .transcript-pill svg { opacity: 0.5; }
+
+    .pstn-disclaimer {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255, 170, 0, 0.07);
+      border: 1px solid rgba(255,170,0,0.18);
+      border-radius: 10px;
+      padding: 6px 10px;
+      margin-top: 4px;
+      flex-shrink: 0;
+    }
+    .pstn-disclaimer-icon {
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+    .pstn-disclaimer-text {
+      font-size: 9px;
+      color: rgba(255,200,80,0.7);
+      line-height: 1.4;
+      font-weight: 500;
+    }
+    .pstn-disclaimer-text strong {
+      color: rgba(255,210,100,0.9);
+      font-weight: 700;
+    }
+
+    /* Per-speaker voice wave bars */
+    .spk-wave {
+      display: inline-flex;
+      align-items: center;
+      gap: 1.5px;
+      height: 10px;
+      margin-left: 5px;
+      vertical-align: middle;
+    }
+    .spk-wave span {
+      display: inline-block;
+      width: 2px;
+      border-radius: 2px;
+      animation: spk-pulse 0.7s ease-in-out infinite;
+    }
+    .spk-wave.ai span  { background: #4E85F7; }
+    .spk-wave.rec span { background: #61D19E; }
+    .spk-wave span:nth-child(1) { height: 4px;  animation-delay: 0.0s; }
+    .spk-wave span:nth-child(2) { height: 8px;  animation-delay: 0.1s; }
+    .spk-wave span:nth-child(3) { height: 6px;  animation-delay: 0.2s; }
+    .spk-wave span:nth-child(4) { height: 10px; animation-delay: 0.05s;}
+    .spk-wave span:nth-child(5) { height: 5px;  animation-delay: 0.15s;}
+    @keyframes spk-pulse {
+      0%,100% { transform: scaleY(0.35); }
+      50%      { transform: scaleY(1);    }
+    }
+    /* static (non-speaking) state */
+    .spk-wave.idle span { animation: none; transform: scaleY(0.35); }
+
     .call-bubble {
       max-width: 88%;
-      padding: 8px 12px;
-      border-radius: 14px;
-      font-size: 11.5px;
+      padding: 7px 11px;
+      border-radius: 12px;
+      font-size: 11px;
       line-height: 1.45;
       opacity: 0;
       transform: translateY(6px);
@@ -1052,63 +1358,56 @@
 
     .call-bubble.recep {
       align-self: flex-start;
-      background: rgba(97, 209, 158, 0.1);
-      border: 1px solid rgba(97, 209, 158, 0.15);
+      background: rgba(97, 209, 158, 0.07);
+      border: 1px solid rgba(97, 209, 158, 0.14);
+      border-left: 2.5px solid rgba(97,209,158,0.5);
+      border-radius: 4px 12px 12px 4px;
       color: rgba(255, 255, 255, 0.8);
     }
 
     .call-bubble.asst {
       align-self: flex-end;
-      background: rgba(78, 133, 247, 0.12);
-      border: 1px solid rgba(78, 133, 247, 0.18);
+      background: rgba(78, 133, 247, 0.08);
+      border: 1px solid rgba(78, 133, 247, 0.15);
+      border-right: 2.5px solid rgba(78,133,247,0.5);
+      border-radius: 12px 4px 4px 12px;
       color: rgba(255, 255, 255, 0.8);
     }
 
     .bubble-speaker {
-      font-size: 9px;
+      font-size: 8.5px;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.5px;
       margin-bottom: 3px;
+      display: flex;
+      align-items: center;
     }
 
-    .bubble-speaker.recep {
-      color: #61D19E;
-    }
+    .bubble-speaker.recep { color: #61D19E; }
+    .bubble-speaker.asst  { color: #4E85F7; }
 
-    .bubble-speaker.asst {
-      color: #4E85F7;
-    }
-
+    /* Voice typing indicator — bars instead of dots */
     .call-typing {
       align-self: flex-start;
       display: flex;
-      gap: 4px;
+      align-items: center;
+      gap: 2px;
       padding: 8px 14px;
       background: rgba(255, 255, 255, 0.04);
-      border-radius: 14px;
+      border-radius: 12px;
       opacity: 0;
       transition: opacity 0.2s;
+      height: 32px;
     }
 
-    .call-typing.visible {
-      opacity: 1;
-    }
-
-    .call-typing.right {
-      align-self: flex-end;
-    }
+    .call-typing.visible { opacity: 1; }
+    .call-typing.right   { align-self: flex-end; }
 
     .typing-dot {
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
+      width: 2.5px;
+      border-radius: 2px;
       background: rgba(255, 255, 255, 0.3);
-      animation: typing-bounce 1s ease-in-out infinite;
-    }
-
-    .typing-dot:nth-child(2) {
-      animation-delay: 0.15s;
     }
 
     .typing-dot:nth-child(3) {
@@ -1138,6 +1437,7 @@
     }
 
     .call-end-badge {
+      display: none;
       align-self: center;
       background: rgba(97, 209, 158, 0.1);
       border: 1px solid rgba(97, 209, 158, 0.2);
@@ -1146,29 +1446,24 @@
       font-weight: 700;
       padding: 4px 14px;
       border-radius: 12px;
-      opacity: 0;
-      transition: opacity 0.4s;
     }
 
     .call-end-badge.visible {
-      opacity: 1;
+      display: block;
     }
 
     .no-phone-callout {
+      display: none;
       margin: 10px 4px 0;
       padding: 10px 14px;
       background: linear-gradient(135deg, rgba(124, 58, 237, 0.15), rgba(78, 133, 247, 0.1));
       border: 1.5px solid rgba(138, 92, 246, 0.3);
       border-radius: 14px;
       text-align: center;
-      opacity: 0;
-      transform: translateY(8px);
-      transition: all 0.5s ease;
     }
 
     .no-phone-callout.visible {
-      opacity: 1;
-      transform: translateY(0);
+      display: block;
     }
 
     .no-phone-callout-icon {
@@ -1274,11 +1569,19 @@
     /* ========================================= */
     /* PHASE 6: Call History / Transcript         */
     /* ========================================= */
+    #phase7 {
+      background: #0d0d12;
+    }
+
     .history-container {
       flex: 1;
       padding: 0 16px;
-      overflow: hidden;
+      overflow-y: auto;
+      overflow-x: hidden;
+      scrollbar-width: none;
+      min-height: 0;
     }
+    .history-container::-webkit-scrollbar { display: none; }
 
     .history-header {
       text-align: center;
@@ -1294,28 +1597,28 @@
     }
 
     .history-title {
-      color: white;
+      color: #ffffff;
       font-size: 20px;
       font-weight: 800;
       margin-bottom: 4px;
     }
 
     .history-subtitle {
-      color: rgba(255, 255, 255, 0.35);
+      color: #a0a0b8;
       font-size: 12px;
       margin-bottom: 2px;
     }
 
     .history-disclaimer {
-      color: rgba(97, 209, 158, 0.6);
+      color: #61D19E;
       font-size: 10px;
       font-style: italic;
     }
 
     /* Attempt card */
     .attempt-card {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       border-radius: 14px;
       padding: 14px 16px;
       margin: 12px 0;
@@ -1351,13 +1654,13 @@
     .attempt-info {}
 
     .attempt-label {
-      color: white;
+      color: #ffffff;
       font-size: 13px;
       font-weight: 700;
     }
 
     .attempt-date {
-      color: rgba(255, 255, 255, 0.35);
+      color: #a0a0b8;
       font-size: 11px;
     }
 
@@ -1371,7 +1674,7 @@
     }
 
     .attempt-result-label {
-      color: rgba(255, 255, 255, 0.3);
+      color: rgba(255, 255, 255, 0.55);
       font-size: 10px;
       font-weight: 700;
       text-transform: uppercase;
@@ -1380,7 +1683,7 @@
     }
 
     .attempt-result {
-      color: white;
+      color: #ffffff;
       font-size: 14px;
       font-weight: 600;
       margin-bottom: 12px;
@@ -1388,7 +1691,7 @@
 
     /* Transcript items in history */
     .hist-transcript-label {
-      color: rgba(255, 255, 255, 0.3);
+      color: rgba(255, 255, 255, 0.6);
       font-size: 10px;
       font-weight: 700;
       text-transform: uppercase;
@@ -1453,7 +1756,7 @@
     }
 
     .hist-msg-text {
-      color: rgba(255, 255, 255, 0.7);
+      color: rgba(255, 255, 255, 0.88);
       font-size: 12.5px;
       line-height: 1.5;
     }
@@ -1487,84 +1790,269 @@
   <div class="phone-frame">
     <div class="notch"></div>
     <div class="status-bar">
-      <span>9:41</span>
-      <span>📶 🔋</span>
+      <span>8:18</span>
+      <div class="status-bar-right">
+        <span>▪▪▪</span>
+        <span>WiFi</span>
+        <span style="background:#4ade80;color:#000;font-size:10px;font-weight:800;padding:1px 5px;border-radius:4px;">55</span>
+      </div>
     </div>
 
     <div class="screen" id="screen">
-      <!-- ====== PHASE 0: Appointments List ====== -->
+      <!-- ====== PHASE 0: Appointments List (Modern App Design) ====== -->
       <div class="phase active" id="phase0">
-        <div class="appt-list-header">Appointments</div>
-        <div class="filter-row">
-          <div class="filter-chip active"><span class="icon">📅</span>All</div>
-          <div class="filter-chip"><span class="icon">⭐</span>Favorite</div>
-          <div class="filter-chip"><span class="icon">❤️</span>Health</div>
-          <div class="filter-chip"><span class="icon">🏢</span>Work</div>
+        <!-- Page header -->
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:4px 18px 0;">
+          <div class="appt-list-header" style="padding:0;">Appointments</div>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+            <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+          </svg>
         </div>
-        <div class="appt-list">
-          <div class="appt-card-list">
-            <div class="appt-date-block">
-              <div class="appt-date-month">FEB</div>
-              <div class="appt-date-day">18</div>
-              <div class="appt-date-time">3:30 PM</div>
+
+        <!-- Family member avatars -->
+        <div class="avatar-row">
+          <div class="avatar-item">
+            <div class="avatar-circle active">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="white" stroke="none">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
             </div>
-            <div class="appt-info">
-              <div class="appt-info-title">Dr. ABC – Annual Physical</div>
-              <div class="appt-info-location">◉ Family Medicine</div>
-            </div>
-            <div class="card-icons">
-              <div class="card-icon-btn health">🏥</div>
-              <div class="card-icon-btn nav">📍</div>
-            </div>
-            <div class="ai-agent-badge" id="agent-badge-1">🤖 AI Agent</div>
+            <div class="avatar-label" style="color:#60a5fa;">All</div>
           </div>
-          <div class="appt-card-list">
-            <div class="appt-date-block">
-              <div class="appt-date-month">FEB</div>
-              <div class="appt-date-day">25</div>
-              <div class="appt-date-time">9:00 AM</div>
+          <div class="avatar-item">
+            <div class="avatar-circle inactive">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="rgba(255,255,255,0.55)" stroke="none">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+              </svg>
             </div>
-            <div class="appt-info">
-              <div class="appt-info-title">Dental Cleaning</div>
-              <div class="appt-info-location">◉ ABC Dentistry</div>
-            </div>
-            <div class="card-icons">
-              <div class="card-icon-btn health">🏥</div>
-              <div class="card-icon-btn nav">📍</div>
-            </div>
-            <div class="ai-agent-badge">🤖 AI Agent</div>
+            <div class="avatar-label">Me</div>
           </div>
-          <div class="appt-card-list">
-            <div class="appt-date-block">
-              <div class="appt-date-month">MAR</div>
-              <div class="appt-date-day">3</div>
-              <div class="appt-date-time">10:00 AM</div>
-            </div>
-            <div class="appt-info">
-              <div class="appt-info-title">Eye Exam</div>
-              <div class="appt-info-location">◉ Vision Center</div>
-            </div>
-            <div class="card-icons">
-              <div class="card-icon-btn health">🏥</div>
-              <div class="card-icon-btn nav">📍</div>
-            </div>
-            <div class="ai-agent-badge">🤖 AI Agent</div>
+          <div class="avatar-item">
+            <div class="avatar-circle" style="background:rgba(255,200,80,0.14);border:1.5px solid rgba(255,200,80,0.28);font-size:18px;">😊</div>
+            <div class="avatar-label">EW</div>
+          </div>
+          <div class="avatar-item">
+            <div class="avatar-circle" style="background:rgba(255,130,90,0.14);border:1.5px solid rgba(255,130,90,0.28);font-size:18px;">👧</div>
+            <div class="avatar-label">SW</div>
+          </div>
+          <div class="avatar-item">
+            <div class="avatar-circle" style="background:rgba(210,170,255,0.14);border:1.5px solid rgba(210,170,255,0.28);font-size:18px;">👦</div>
+            <div class="avatar-label">LW</div>
           </div>
         </div>
+
+        <!-- Filter chips -->
+        <div class="filter-row" style="padding:5px 14px 3px;gap:7px;overflow-x:auto;scrollbar-width:none;flex-wrap:nowrap;">
+          <div class="filter-chip-new fc-all">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round">
+              <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+            All
+          </div>
+          <div class="filter-chip-new fc-fav">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#f0b429" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+            Favorite
+          </div>
+          <div class="filter-chip-new fc-hlth">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#f43f5e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+            Wellness
+          </div>
+          <div class="filter-chip-new fc-work">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+            </svg>
+            Work
+          </div>
+        </div>
+
+        <!-- Search bar -->
+        <div class="search-bar">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2" stroke-linecap="round">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <span class="search-placeholder">Search appointments...</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/>
+            <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+          </svg>
+        </div>
+
+        <!-- Appointment cards -->
+        <div class="appt-list" style="padding:5px 13px 0;">
+
+          <!-- Card 1: Lily's allergy testing (yellow) -->
+          <div class="appt-card-modern yellow">
+            <div class="card-main-row">
+              <div class="appt-date-col">
+                <div class="appt-date-month">AUG</div>
+                <div class="appt-date-day">5</div>
+              </div>
+              <div class="card-content-col">
+                <div class="card-title">Lily's allergy testing</div>
+                <div class="card-meta-row">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.38)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  1:00 PM
+                </div>
+                <div class="card-meta-row">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.38)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  AllerCare Specialty Center
+                </div>
+              </div>
+              <div class="card-avatar-col">
+                <div class="card-avatar-emoji" style="background:rgba(255,200,80,0.14);border-color:rgba(255,200,80,0.25);">😊</div>
+                <div class="card-avatar-init">LW</div>
+              </div>
+            </div>
+            <div class="card-divider"></div>
+            <div class="card-actions-row">
+              <div class="card-action-btns">
+                <span class="action-icon-btn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                </span>
+                <span class="action-icon-btn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                </span>
+              </div>
+              <div class="ai-agent-pill" id="agent-badge-1">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><line x1="8" y1="16" x2="8" y2="16" stroke-width="3"/><line x1="16" y1="16" x2="16" y2="16" stroke-width="3"/></svg>
+                AI Agent
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Sofia's cardiology (red) -->
+          <div class="appt-card-modern red">
+            <div class="card-main-row">
+              <div class="appt-date-col">
+                <div class="appt-date-month">AUG</div>
+                <div class="appt-date-day">10</div>
+              </div>
+              <div class="card-content-col">
+                <div class="card-title">Sofia's cardiology follow-up</div>
+                <div class="card-meta-row">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.38)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  9:30 AM
+                </div>
+                <div class="card-meta-row">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.38)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  HeartCare Institute
+                </div>
+              </div>
+              <div class="card-avatar-col">
+                <div class="card-avatar-emoji" style="background:rgba(255,130,90,0.14);border-color:rgba(255,130,90,0.25);">👧</div>
+                <div class="card-avatar-init">SW</div>
+              </div>
+            </div>
+            <div class="card-divider"></div>
+            <div class="card-actions-row">
+              <div class="card-action-btns">
+                <span class="action-icon-btn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                </span>
+                <span class="action-icon-btn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                </span>
+              </div>
+              <div class="ai-agent-pill">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><line x1="8" y1="16" x2="8" y2="16" stroke-width="3"/><line x1="16" y1="16" x2="16" y2="16" stroke-width="3"/></svg>
+                AI Agent
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Sofia's physical therapy (red) -->
+          <div class="appt-card-modern red">
+            <div class="card-main-row">
+              <div class="appt-date-col">
+                <div class="appt-date-month">AUG</div>
+                <div class="appt-date-day">18</div>
+              </div>
+              <div class="card-content-col">
+                <div class="card-title">Sofia's physical therapy</div>
+                <div class="card-meta-row">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.38)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  2:00 PM
+                </div>
+                <div class="card-meta-row">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.38)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  Northside Therapy Associates
+                </div>
+              </div>
+              <div class="card-avatar-col">
+                <div class="card-avatar-emoji" style="background:rgba(255,130,90,0.14);border-color:rgba(255,130,90,0.25);">👧</div>
+                <div class="card-avatar-init">SW</div>
+              </div>
+            </div>
+            <div class="card-divider"></div>
+            <div class="card-actions-row">
+              <div class="card-action-btns">
+                <span class="action-icon-btn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                </span>
+                <span class="action-icon-btn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                </span>
+              </div>
+              <div class="ai-agent-pill">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><line x1="8" y1="16" x2="8" y2="16" stroke-width="3"/><line x1="16" y1="16" x2="16" y2="16" stroke-width="3"/></svg>
+                AI Agent
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Floating Action Button -->
+        <div class="fab-btn">+</div>
+
+        <!-- Tab Bar -->
         <div class="tab-bar">
-          <div class="tab-item"><span class="tab-icon">📅</span>Today</div>
-          <div class="tab-item active"><span class="tab-icon">📋</span>Appointments</div>
-          <div class="tab-item"><span class="tab-icon">🤖</span>AI</div>
-          <div class="tab-item"><span class="tab-icon">👤</span>Account</div>
+          <div class="tab-item">
+            <div class="tab-icon-svg">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            Today
+          </div>
+          <div class="tab-item active">
+            <div class="tab-icon-svg">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </div>
+            Appointments
+          </div>
+          <div class="tab-item">
+            <div class="tab-icon-svg">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.46 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.46 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg>
+            </div>
+            AI
+          </div>
+          <div class="tab-item">
+            <div class="tab-icon-svg">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            Account
+          </div>
         </div>
         <div class="tap-ring" id="tap-ring"></div>
       </div>
 
       <!-- ====== PHASE 1: Bottom Sheet ====== -->
       <div class="phase" id="phase1">
-        <div class="appt-list-header" style="opacity:0.3">Appointments</div>
-        <div class="filter-row" style="opacity:0.2">
-          <div class="filter-chip active"><span class="icon">📅</span>All</div>
+        <!-- Dimmed app header -->
+        <div style="opacity:0.25;">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:2px 18px 0;">
+            <div class="appt-list-header" style="padding:0;">Appointments</div>
+            <span style="font-size:16px;">🔔</span>
+          </div>
+          <div class="filter-row" style="padding:6px 14px 4px;">
+            <div class="filter-chip active">📅 All</div>
+            <div class="filter-chip">⭐ Favorite</div>
+          </div>
         </div>
         <div class="bottom-sheet-overlay">
           <div class="bottom-sheet" id="bottom-sheet">
@@ -1612,7 +2100,7 @@
           <div class="appt-card-mini">
             <div class="appt-mini-header">
               <span class="appt-mini-title">Dr. ABC – Annual Physical</span>
-              <span class="badge-sm badge-health">Health</span>
+              <span class="badge-sm badge-health">Wellness</span>
             </div>
             <div class="appt-mini-detail">
               📅 <span>Tue, Feb 18 · 3:30 PM</span><br>
@@ -1688,14 +2176,14 @@
           </div>
           <div class="call-view-body" id="call-chat">
             <!-- Filled by JS -->
-          </div>
-          <div class="call-end-badge" id="call-end-badge">✅ Call Completed · Appointment Confirmed</div>
-          <div class="no-phone-callout" id="call-no-phone">
-            <div class="no-phone-callout-icon">📱🚫</div>
-            <div class="no-phone-callout-title">Your Phone Voice Service Was Never Used</div>
-            <div class="no-phone-callout-text">This entire call happened on <strong>IDDU's own secure
-                telephony infrastructure</strong>.<br>Your phone, minutes, and carrier were <strong>never
-                involved</strong>.</div>
+            <div class="call-end-badge" id="call-end-badge">✅ Call Completed · Appointment Confirmed</div>
+            <div class="no-phone-callout" id="call-no-phone">
+              <div class="no-phone-callout-icon">📱🚫</div>
+              <div class="no-phone-callout-title">Your Phone Voice Service Was Never Used</div>
+              <div class="no-phone-callout-text">This entire call happened on <strong>IDDU's own secure
+                  telephony infrastructure</strong>.<br>Your phone, minutes, and carrier were <strong>never
+                  involved</strong>.</div>
+            </div>
           </div>
         </div>
         <div class="brand-label">powered by <em>iddu</em></div>
@@ -1703,66 +2191,106 @@
 
       <!-- ====== PHASE 5: Background Processing + Notification ====== -->
       <div class="phase" id="phase5">
-        <div class="appt-list-header">Appointments</div>
-        <div class="filter-row">
-          <div class="filter-chip active"><span class="icon">📅</span>All</div>
-          <div class="filter-chip"><span class="icon">⭐</span>Favorite</div>
-          <div class="filter-chip"><span class="icon">❤️</span>Health</div>
-          <div class="filter-chip"><span class="icon">🏢</span>Work</div>
+        <!-- Page header -->
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:4px 18px 0;">
+          <div class="appt-list-header" style="padding:0;">Appointments</div>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+            <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+          </svg>
         </div>
+        <!-- Filter -->
+        <div class="filter-row" style="padding:5px 14px 3px;gap:7px;overflow-x:auto;scrollbar-width:none;flex-wrap:nowrap;">
+          <div class="filter-chip-new fc-all">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            All
+          </div>
+          <div class="filter-chip-new fc-fav">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#f0b429" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            Favorite
+          </div>
+          <div class="filter-chip-new fc-hlth">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#f43f5e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            Wellness
+          </div>
+          <div class="filter-chip-new fc-work">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            Work
+          </div>
+        </div>
+        <!-- Processing status -->
         <div class="bg-processing-status" id="bg-status">
           <div class="bg-spinner"></div>
-          <span class="bg-status-text" id="bg-status-text">IDDU is calling Family Medicine...</span>
+          <span class="bg-status-text" id="bg-status-text">IDDU is calling AllerCare Specialty Center...</span>
         </div>
-        <div class="appt-list">
-          <div class="appt-card-list">
-            <div class="appt-date-block">
-              <div class="appt-date-month">FEB</div>
-              <div class="appt-date-day">18</div>
-              <div class="appt-date-time">3:30 PM</div>
+        <!-- Cards -->
+        <div class="appt-list" style="padding:4px 13px 0;">
+          <!-- Card 1: processing -->
+          <div class="appt-card-modern yellow">
+            <div class="card-main-row">
+              <div class="appt-date-col">
+                <div class="appt-date-month">AUG</div>
+                <div class="appt-date-day">5</div>
+              </div>
+              <div class="card-content-col">
+                <div class="card-title">Lily's allergy testing</div>
+                <div class="card-meta-row">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.38)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  1:00 PM
+                </div>
+                <div class="card-meta-row">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.38)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  AllerCare Specialty Center
+                </div>
+              </div>
+              <div class="card-avatar-col">
+                <div class="card-avatar-emoji" style="background:rgba(255,200,80,0.14);border-color:rgba(255,200,80,0.25);">😊</div>
+                <div class="card-avatar-init">LW</div>
+              </div>
             </div>
-            <div class="appt-info">
-              <div class="appt-info-title">Dr. ABC – Annual Physical</div>
-              <div class="appt-info-location">◉ Family Medicine</div>
+            <div class="card-divider"></div>
+            <div class="card-actions-row">
+              <div class="card-action-btns">
+                <span class="action-icon-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></span>
+                <span class="action-icon-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></span>
+              </div>
+              <div class="badge-sm badge-processing" id="processing-badge">🔄 AI Processing</div>
             </div>
-            <div class="card-icons">
-              <div class="card-icon-btn health">🏥</div>
-              <div class="card-icon-btn nav">📍</div>
-            </div>
-            <div class="badge-sm badge-processing" id="processing-badge"
-              style="position:absolute;bottom:12px;right:14px;">🔄 AI Processing</div>
           </div>
-          <div class="appt-card-list">
-            <div class="appt-date-block">
-              <div class="appt-date-month">FEB</div>
-              <div class="appt-date-day">25</div>
-              <div class="appt-date-time">9:00 AM</div>
+          <!-- Card 2 -->
+          <div class="appt-card-modern red">
+            <div class="card-main-row">
+              <div class="appt-date-col">
+                <div class="appt-date-month">AUG</div>
+                <div class="appt-date-day">10</div>
+              </div>
+              <div class="card-content-col">
+                <div class="card-title">Sofia's cardiology follow-up</div>
+                <div class="card-meta-row">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.38)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  9:30 AM
+                </div>
+                <div class="card-meta-row">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.38)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  HeartCare Institute
+                </div>
+              </div>
+              <div class="card-avatar-col">
+                <div class="card-avatar-emoji" style="background:rgba(255,130,90,0.14);border-color:rgba(255,130,90,0.25);">👧</div>
+                <div class="card-avatar-init">SW</div>
+              </div>
             </div>
-            <div class="appt-info">
-              <div class="appt-info-title">Dental Cleaning</div>
-              <div class="appt-info-location">◉ ABC Dentistry</div>
+            <div class="card-divider"></div>
+            <div class="card-actions-row">
+              <div class="card-action-btns">
+                <span class="action-icon-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></span>
+                <span class="action-icon-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></span>
+              </div>
+              <div class="ai-agent-pill">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><line x1="8" y1="16" x2="8" y2="16" stroke-width="3"/><line x1="16" y1="16" x2="16" y2="16" stroke-width="3"/></svg>
+                AI Agent
+              </div>
             </div>
-            <div class="card-icons">
-              <div class="card-icon-btn health">🏥</div>
-              <div class="card-icon-btn nav">📍</div>
-            </div>
-            <div class="ai-agent-badge">🤖 AI Agent</div>
-          </div>
-          <div class="appt-card-list">
-            <div class="appt-date-block">
-              <div class="appt-date-month">MAR</div>
-              <div class="appt-date-day">3</div>
-              <div class="appt-date-time">10:00 AM</div>
-            </div>
-            <div class="appt-info">
-              <div class="appt-info-title">Eye Exam</div>
-              <div class="appt-info-location">◉ Vision Center</div>
-            </div>
-            <div class="card-icons">
-              <div class="card-icon-btn health">🏥</div>
-              <div class="card-icon-btn nav">📍</div>
-            </div>
-            <div class="ai-agent-badge">🤖 AI Agent</div>
           </div>
         </div>
         <!-- Push Notification -->
@@ -1771,15 +2299,30 @@
           <div class="push-notif-content">
             <div class="push-notif-app">IDDU</div>
             <div class="push-notif-title">✅ Appointment Rescheduled</div>
-            <div class="push-notif-body">Dr. ABC moved to Thu, Feb 20 at 2:00 PM</div>
+            <div class="push-notif-body">Lily's allergy testing moved to Aug 7 at 10:30 AM</div>
           </div>
           <div class="push-notif-time">now</div>
         </div>
+        <!-- FAB -->
+        <div class="fab-btn">+</div>
+        <!-- Tab Bar -->
         <div class="tab-bar">
-          <div class="tab-item"><span class="tab-icon">📅</span>Today</div>
-          <div class="tab-item active"><span class="tab-icon">📋</span>Appointments</div>
-          <div class="tab-item"><span class="tab-icon">🤖</span>AI</div>
-          <div class="tab-item"><span class="tab-icon">👤</span>Account</div>
+          <div class="tab-item">
+            <div class="tab-icon-svg"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+            Today
+          </div>
+          <div class="tab-item active">
+            <div class="tab-icon-svg"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></div>
+            Appointments
+          </div>
+          <div class="tab-item">
+            <div class="tab-icon-svg"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.46 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.46 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg></div>
+            AI
+          </div>
+          <div class="tab-item">
+            <div class="tab-icon-svg"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+            Account
+          </div>
         </div>
       </div>
 
@@ -1848,10 +2391,22 @@
         </div>
 
         <div class="tab-bar">
-          <div class="tab-item"><span class="tab-icon">📅</span>Today</div>
-          <div class="tab-item active"><span class="tab-icon">📋</span>Appointments</div>
-          <div class="tab-item"><span class="tab-icon">🤖</span>AI</div>
-          <div class="tab-item"><span class="tab-icon">👤</span>Account</div>
+          <div class="tab-item">
+            <div class="tab-icon-svg"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+            Today
+          </div>
+          <div class="tab-item active">
+            <div class="tab-icon-svg"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></div>
+            Appointments
+          </div>
+          <div class="tab-item">
+            <div class="tab-icon-svg"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.46 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.46 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg></div>
+            AI
+          </div>
+          <div class="tab-item">
+            <div class="tab-icon-svg"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+            Account
+          </div>
         </div>
       </div>
     </div>
@@ -1889,13 +2444,15 @@
       ring.classList.add('animating');
     }
 
+    const AI_ICON_SVG = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><line x1="8" y1="16" x2="8" y2="16" stroke-width="3"/><line x1="16" y1="16" x2="16" y2="16" stroke-width="3"/></svg>`;
+    const PERSON_ICON_SVG = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`;
     function addHistMessage(msg) {
       const container = document.getElementById('hist-transcript');
       const div = document.createElement('div');
       div.className = 'hist-msg';
       div.innerHTML = `
       <div class="hist-msg-icon ${msg.speaker}">
-        ${msg.speaker === 'asst' ? '🤖' : '👤'}
+        ${msg.speaker === 'asst' ? AI_ICON_SVG : PERSON_ICON_SVG}
       </div>
       <div>
         <div class="hist-msg-speaker ${msg.speaker}">${msg.label}</div>
@@ -1907,11 +2464,14 @@
     }
 
     // === CALL VIEW ANIMATION ===
+    const SPK_WAVE = `<span class="spk-wave {cls}"><span></span><span></span><span></span><span></span><span></span></span>`;
     function addCallBubble(msg) {
       const chat = document.getElementById('call-chat');
       const bubble = document.createElement('div');
       bubble.className = `call-bubble ${msg.speaker}`;
-      bubble.innerHTML = `<div class="bubble-speaker ${msg.speaker}">${msg.label}</div><div>${msg.text}</div>`;
+      const waveClass = msg.speaker === 'asst' ? 'ai' : 'rec';
+      const wave = SPK_WAVE.replace('{cls}', waveClass);
+      bubble.innerHTML = `<div class="bubble-speaker ${msg.speaker}">${msg.label}${wave}</div><div>${msg.text}</div>`;
       chat.appendChild(bubble);
       chat.scrollTop = chat.scrollHeight;
       requestAnimationFrame(() => requestAnimationFrame(() => {
@@ -1925,7 +2485,7 @@
       const typing = document.createElement('div');
       typing.className = `call-typing ${side === 'asst' ? 'right' : ''}`;
       typing.id = 'active-typing';
-      typing.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+      typing.innerHTML = '<div class="typing-dot"></div>'.repeat(6);
       chat.appendChild(typing);
       chat.scrollTop = chat.scrollHeight;
       requestAnimationFrame(() => typing.classList.add('visible'));
@@ -1935,6 +2495,11 @@
     function removeTyping() {
       const t = document.getElementById('active-typing');
       if (t) t.remove();
+    }
+
+    function resetCallChat() {
+      const chat = document.getElementById('call-chat');
+      chat.innerHTML = '';
     }
 
     let callTimerInterval;
@@ -1955,9 +2520,19 @@
 
     async function animateCallView() {
       const chat = document.getElementById('call-chat');
+      // Detach badges entirely — they will be appended at the END of the call
+      const eb = document.getElementById('call-end-badge');
+      const np = document.getElementById('call-no-phone');
+      if (eb) { eb.classList.remove('visible'); eb.remove(); }
+      if (np) { np.classList.remove('visible'); np.remove(); }
       chat.innerHTML = '';
-      document.getElementById('call-end-badge').classList.remove('visible');
       document.getElementById('call-waveform').style.opacity = '1';
+
+      // Add transcript pill header at top
+      const pill = document.createElement('div');
+      pill.className = 'transcript-pill';
+      pill.innerHTML = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.8a16 16 0 0 0 6 6l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z"/></svg>Live Call Transcript &nbsp;·&nbsp; Demo Only`;
+      chat.appendChild(pill);
 
       startCallTimer();
 
@@ -1980,12 +2555,30 @@
       stopCallTimer();
       document.getElementById('call-waveform').style.opacity = '0.2';
       document.getElementById('call-live-badge').style.opacity = '0.3';
+
+      // Append PSTN disclaimer after all transcript bubbles
+      const disclaimer = document.createElement('div');
+      disclaimer.className = 'pstn-disclaimer';
+      disclaimer.innerHTML = `
+        <div class="pstn-disclaimer-icon">📞</div>
+        <div class="pstn-disclaimer-text">
+          <strong>Real PSTN phone call</strong> — transcript shown for demo only.<br>
+          IDDU's AI dials the clinic directly. No typing. No chat.
+        </div>`;
+      chat.appendChild(disclaimer);
+      chat.scrollTop = chat.scrollHeight;
+
       await sleep(300);
-      document.getElementById('call-end-badge').classList.add('visible');
+      // Append completion badge at the bottom (after all bubbles + disclaimer)
+      if (eb) { chat.appendChild(eb); eb.classList.add('visible'); }
+      chat.scrollTop = chat.scrollHeight;
       await sleep(800);
-      document.getElementById('call-no-phone').classList.add('visible');
+      // Append no-phone callout at the very bottom
+      if (np) { chat.appendChild(np); np.classList.add('visible'); }
+      chat.scrollTop = chat.scrollHeight;
       await sleep(5000);
     }
+
 
     // Animate the cancel timer countdown (visual only, fast for demo)
     function animateCancelTimer(durationMs) {
@@ -2019,7 +2612,12 @@
     async function runDemo() {
       // Reset all state
       document.getElementById('hist-transcript').innerHTML = '';
-      document.getElementById('call-chat').innerHTML = '';
+      const chat0 = document.getElementById('call-chat');
+      const eb = document.getElementById('call-end-badge');
+      const np = document.getElementById('call-no-phone');
+      if (eb) { eb.classList.remove('visible'); eb.remove(); }
+      if (np) { np.classList.remove('visible'); np.remove(); }
+      chat0.innerHTML = '';
       document.getElementById('bottom-sheet').classList.remove('visible');
       document.getElementById('ai-modal').classList.remove('visible');
       document.getElementById('mic-btn').classList.remove('recording');
@@ -2037,8 +2635,6 @@
       document.getElementById('cancel-bar').style.width = '100%';
       document.getElementById('cancel-timer').textContent = '14:48';
       // Reset Phase 4
-      document.getElementById('call-end-badge').classList.remove('visible');
-      document.getElementById('call-no-phone').classList.remove('visible');
       document.getElementById('call-live-badge').style.opacity = '1';
       document.getElementById('call-waveform').style.opacity = '1';
       stopCallTimer();
