@@ -6,26 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const startBtn = document.getElementById('start-sim-btn');
     const complexBtn = document.getElementById('start-complex-sim-btn');
     const transcript = document.getElementById('sim-transcript');
-    const audioToggleBtn = document.getElementById('audio-toggle-btn');
 
     if (!transcript) return;
 
-    let isAudioEnabled = false;
     let isRunning = false;
-
-    if (audioToggleBtn) {
-        audioToggleBtn.addEventListener('click', () => {
-            isAudioEnabled = !isAudioEnabled;
-            audioToggleBtn.textContent = isAudioEnabled ? '🔊 Voice On' : '🔇 Voice Off';
-            audioToggleBtn.style.color = isAudioEnabled ? '#ffffff' : 'rgba(255,255,255,0.5)';
-            audioToggleBtn.style.borderColor = isAudioEnabled ? 'rgba(255,255,255,0.5)' : 'rgba(255,255,255,0.2)';
-            audioToggleBtn.style.background = isAudioEnabled ? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.08)';
-            if (isAudioEnabled) {
-                window.speechSynthesis.cancel();
-                window.speechSynthesis.speak(new SpeechSynthesisUtterance('Voice enabled'));
-            }
-        });
-    }
 
     const scenarios = {
         standard: [
@@ -69,8 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (otherBtn) otherBtn.disabled = true;
         transcript.innerHTML = '';
 
-        window.speechSynthesis.cancel();
-
         let i = 0;
 
         const showLine = () => {
@@ -98,21 +80,10 @@ document.addEventListener('DOMContentLoaded', () => {
             transcript.appendChild(lineEl);
             transcript.scrollTop = transcript.scrollHeight;
 
-            if (isAudioEnabled) {
-                const utterance = new SpeechSynthesisUtterance(line.text);
-                if (line.role === 'AI Agent') { utterance.pitch = 1.2; utterance.rate = 0.9; }
-                else if (line.role === 'Clinic') { utterance.pitch = 0.85; utterance.rate = 1.0; }
-                else if (line.role === 'IVR') { utterance.pitch = 0.5; utterance.rate = 0.85; }
-                utterance.onend = showLine;
-                utterance.onerror = () => setTimeout(showLine, 800);
-                window.speechSynthesis.speak(utterance);
-            } else {
-                const delay = line.role === 'IVR' ? 800 : 1200 + line.text.length * 22;
-                setTimeout(showLine, delay);
-            }
+            const delay = line.role === 'IVR' ? 800 : 1200 + line.text.length * 22;
+            setTimeout(showLine, delay);
         };
 
-        // First line fires directly from button click — keeps user-gesture context for speech
         showLine();
     };
 
