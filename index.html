@@ -2045,119 +2045,26 @@
     /* Placeholder chips (video TBD) — keep visuals, disable pointer */
     .ring-chip[data-video="TBD"] { cursor: default; }
 
-    /* === Full Tour Section === */
-    .full-tour-section {
-      padding: 5rem 2rem 4rem;
-      max-width: 860px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .full-tour-card {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      border-radius: 18px;
-      overflow: hidden;
-      cursor: pointer;
-      background: #000;
-      border: 1.5px solid transparent;
-      background-clip: padding-box;
-      box-shadow: 0 0 0 1.5px rgba(56,189,248,0.35),
-                  0 0 40px rgba(168,85,247,0.2),
-                  0 8px 40px rgba(0,0,0,0.6);
-      transition: box-shadow 0.3s ease, transform 0.3s ease;
-    }
-
-    .full-tour-card:hover {
-      box-shadow: 0 0 0 2px rgba(56,189,248,0.6),
-                  0 0 60px rgba(168,85,247,0.35),
-                  0 12px 50px rgba(0,0,0,0.7);
-      transform: scale(1.01);
-    }
-
-    .full-tour-thumb {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    /* Full Tour button — sits below the galaxy, plays 360 video in the right panel */
+    .full-tour-btn {
       display: block;
-    }
-
-    .full-tour-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.45) 100%);
-    }
-
-    .full-tour-play-btn {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 72px;
-      height: 72px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.12);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1.5px solid rgba(255,255,255,0.35);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-      animation: tour-pulse 2.4s ease-in-out infinite;
-    }
-
-    @keyframes tour-pulse {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(56,189,248,0.4); }
-      50%       { box-shadow: 0 0 0 14px rgba(56,189,248,0); }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .full-tour-play-btn { animation: none; }
-    }
-
-    .full-tour-card:hover .full-tour-play-btn {
-      background: rgba(255,255,255,0.22);
-      transform: translate(-50%, -50%) scale(1.08);
-      box-shadow: 0 0 30px rgba(56,189,248,0.5);
-    }
-
-    .full-tour-play-icon {
-      width: 0;
-      height: 0;
-      border-style: solid;
-      border-width: 11px 0 11px 20px;
-      border-color: transparent transparent transparent #fff;
-      margin-left: 4px;
-    }
-
-    .full-tour-label {
-      position: absolute;
-      bottom: 1.1rem;
-      left: 0; right: 0;
-      text-align: center;
-      font-size: 0.78rem;
+      margin: 1.25rem auto 0;
+      padding: 0.6rem 1.4rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(56,189,248,0.35);
+      border-radius: 100px;
+      color: rgba(255,255,255,0.8);
+      font-size: 0.82rem;
       font-weight: 600;
-      color: rgba(255,255,255,0.65);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      pointer-events: none;
+      letter-spacing: 0.01em;
+      cursor: pointer;
+      font-family: 'Inter', system-ui, sans-serif;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
     }
-
-    .full-tour-card iframe {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    @media (max-width: 600px) {
-      .full-tour-play-btn { width: 56px; height: 56px; }
-      .full-tour-play-icon { border-width: 8px 0 8px 15px; margin-left: 3px; }
+    .full-tour-btn:hover {
+      background: rgba(56,189,248,0.1);
+      border-color: rgba(56,189,248,0.65);
+      color: #fff;
     }
 
     /* Hover tooltip (iPhone key-style popup) */
@@ -2837,6 +2744,9 @@
 
         </div>
 
+        <!-- Full tour CTA — plays 360 View in the right panel -->
+        <button class="full-tour-btn" onclick="playFullTour()">🎬 End-to-End Walkthrough</button>
+
       </div><!-- /ds-left -->
 
       <!-- Video right column -->
@@ -2867,21 +2777,6 @@
       </div><!-- /ds-right -->
 
     </section><!-- /demo-split-section -->
-
-    <!-- Watch the Full Tour -->
-    <section class="full-tour-section reveal">
-      <p class="hero-feature-tag tag-purple" style="margin-bottom:1.25rem;">🎬 End-to-End Walkthrough</p>
-      <h2 class="section-title" style="margin-bottom:0.4rem;">Watch the <span class="gradient-text">Full Tour</span></h2>
-      <p style="color:var(--text-secondary);max-width:440px;margin:0 auto 2.25rem;font-size:0.97rem;line-height:1.6;">Every feature, end to end, in one video.</p>
-      <div class="full-tour-card" id="full-tour-card" role="button" aria-label="Play full app tour video" tabindex="0">
-        <img class="full-tour-thumb" src="https://img.youtube.com/vi/2QNdwJzCf-Y/maxresdefault.jpg" alt="Iddu App 360 View thumbnail" loading="lazy">
-        <div class="full-tour-overlay"></div>
-        <div class="full-tour-play-btn" aria-hidden="true">
-          <div class="full-tour-play-icon"></div>
-        </div>
-        <span class="full-tour-label">Play · Iddu App 360 View</span>
-      </div>
-    </section>
 
     <!-- Pain Points Hook Section -->
     <section class="pain-section">
@@ -3830,20 +3725,21 @@
 
     document.addEventListener('DOMContentLoaded', initRadialPicker);
 
-    function initFullTour() {
-      const card = document.getElementById('full-tour-card');
-      if (!card) return;
-      const activate = () => {
-        card.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/2QNdwJzCf-Y?autoplay=1&rel=0&playsinline=1" allow="autoplay; encrypted-media; fullscreen" allowfullscreen title="Iddu App 360 View"></iframe>';
-        card.style.cursor = 'default';
-        card.removeEventListener('click', activate);
-        card.removeEventListener('keydown', onKey);
-      };
-      const onKey = (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); } };
-      card.addEventListener('click', activate);
-      card.addEventListener('keydown', onKey);
+    function playFullTour() {
+      document.querySelectorAll('.ring-chip, .ring-center').forEach(c => c.classList.remove('active'));
+      document.getElementById('snp-title').textContent = 'Iddu App — Full 360 Tour';
+      const frame = document.getElementById('scenario-phone-frame');
+      frame.style.opacity = '0.4';
+      setTimeout(() => {
+        if (ytPlayer && typeof ytPlayer.loadVideoById === 'function') {
+          ytPlayer.loadVideoById('2QNdwJzCf-Y');
+        } else {
+          document.getElementById('demo-video').src =
+            'https://www.youtube-nocookie.com/embed/2QNdwJzCf-Y?autoplay=1&mute=1&loop=1&playlist=2QNdwJzCf-Y&controls=0&rel=0&playsinline=1&enablejsapi=1&origin=https://iddu.app';
+        }
+        frame.style.opacity = '1';
+      }, 220);
     }
-    document.addEventListener('DOMContentLoaded', initFullTour);
 
     function initHeroRotator() {
       const slides = Array.from(document.querySelectorAll('.hero-slide'));
