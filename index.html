@@ -2069,8 +2069,8 @@
 
     /* Hover tooltip (iPhone key-style popup) */
     .ring-tooltip {
-      position: absolute;
-      width: 148px;
+      position: fixed;
+      width: 160px;
       background: rgba(8, 8, 20, 0.94);
       border: 1px solid rgba(168, 85, 247, 0.4);
       border-radius: 11px;
@@ -2734,12 +2734,6 @@
           </div>
           <div class="ring-chip" data-video="TBD" data-title="Wellness Wallet" data-desc="The real cost of care, by family member and by year — no spreadsheets.">
             <span class="chip-icon">📊</span><span class="chip-label">Spending</span>
-          </div>
-
-          <!-- Hover tooltip -->
-          <div class="ring-tooltip" id="ring-tooltip">
-            <span class="rt-title"></span>
-            <span class="rt-desc"></span>
           </div>
 
         </div>
@@ -3689,30 +3683,36 @@
       if (tooltip) {
         chips.forEach(chip => {
           chip.addEventListener('mouseenter', () => {
-            const chipCx = parseFloat(chip.style.left) + 27;
-            const chipCy = parseFloat(chip.style.top)  + 27;
-            const dx = chipCx - cx, dy = chipCy - cy;
-
             tooltip.querySelector('.rt-title').textContent = chip.dataset.title || chip.querySelector('.chip-label').textContent;
             tooltip.querySelector('.rt-desc').textContent  = chip.dataset.desc || '';
 
-            // EDGE = visual half-chip at 1.5× scale (27×1.5=40.5) + 10px gap
-            const TW = 148, TH = 50, EDGE = 51;
+            // Use getBoundingClientRect so the fixed tooltip is always in viewport,
+            // unaffected by any parent overflow:hidden or transform:scale.
+            const r   = chip.getBoundingClientRect();
+            const chipCx = r.left + r.width  / 2;
+            const chipCy = r.top  + r.height / 2;
+            const pr  = picker.getBoundingClientRect();
+            const dx  = chipCx - (pr.left + pr.width  / 2);
+            const dy  = chipCy - (pr.top  + pr.height / 2);
+
+            const TW = 160, TH = 58, GAP = 12;
             let tleft, ttop;
 
             if (Math.abs(dx) >= Math.abs(dy)) {
-              // Chip is left/right of center → tooltip appears to that side
               ttop  = Math.round(chipCy - TH / 2);
               tleft = dx >= 0
-                ? Math.round(chipCx + EDGE)           // right side of orbit
-                : Math.round(chipCx - EDGE - TW);     // left side of orbit
+                ? Math.round(r.right  + GAP)
+                : Math.round(r.left   - GAP - TW);
             } else {
-              // Chip is above/below center → tooltip appears above or below
               tleft = Math.round(chipCx - TW / 2);
               ttop  = dy >= 0
-                ? Math.round(chipCy + EDGE)           // bottom of orbit
-                : Math.round(chipCy - EDGE - TH);     // top of orbit
+                ? Math.round(r.bottom + GAP)
+                : Math.round(r.top    - GAP - TH);
             }
+
+            // Clamp inside viewport with 8px margin
+            tleft = Math.max(8, Math.min(window.innerWidth  - TW - 8, tleft));
+            ttop  = Math.max(8, Math.min(window.innerHeight - TH - 8, ttop));
 
             tooltip.style.left = tleft + 'px';
             tooltip.style.top  = ttop  + 'px';
@@ -3789,6 +3789,11 @@
   <!-- Custom Scripts -->
   <script src="assets/js/animations.js?v=20260412v5"></script>
   <script src="assets/js/ai-simulator.js?v=20260412v5"></script>
+  <!-- Galaxy tooltip — lives on body so position:fixed escapes any overflow/transform parent -->
+  <div class="ring-tooltip" id="ring-tooltip">
+    <span class="rt-title"></span>
+    <span class="rt-desc"></span>
+  </div>
 </body>
 
 </html>
