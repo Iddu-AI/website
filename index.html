@@ -1088,6 +1088,199 @@
       .founder-card { flex-direction: column; gap: 0.75rem; }
     }
 
+    /* === Brochure Download === */
+    .brochure-section {
+      padding: 5rem 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .brochure-card {
+      display: flex;
+      gap: 3rem;
+      align-items: center;
+      background: linear-gradient(145deg, rgba(56,189,248,0.06), rgba(168,85,247,0.1));
+      border: 1px solid rgba(168,85,247,0.3);
+      border-radius: 28px;
+      padding: 3rem;
+      position: relative;
+      overflow: hidden;
+      text-align: left;
+    }
+
+    .brochure-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 20% 50%, rgba(56,189,248,0.08) 0%, transparent 60%),
+                  radial-gradient(ellipse at 80% 50%, rgba(168,85,247,0.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .brochure-preview-col {
+      flex-shrink: 0;
+      position: relative;
+      width: 180px;
+    }
+
+    .brochure-cover-glow {
+      position: absolute;
+      inset: -20px;
+      background: radial-gradient(ellipse at center, rgba(168,85,247,0.35) 0%, transparent 70%);
+      filter: blur(18px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .brochure-cover {
+      position: relative;
+      z-index: 1;
+      width: 180px;
+      height: 234px;
+      border-radius: 12px;
+      background: linear-gradient(160deg, #1a1340 0%, #0f0c24 100%);
+      border: 1px solid rgba(168,85,247,0.5);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.6), 0 0 0 1px rgba(56,189,248,0.15),
+                  inset 0 1px 0 rgba(255,255,255,0.06);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .brochure-cover:hover {
+      transform: translateY(-4px) rotate(-1deg);
+      box-shadow: 0 16px 60px rgba(0,0,0,0.7), 0 0 0 1px rgba(168,85,247,0.4),
+                  0 0 40px rgba(168,85,247,0.2);
+    }
+
+    .brochure-cover-inner {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem 1rem;
+      gap: 1rem;
+      position: relative;
+    }
+
+    .brochure-cover-logo { text-align: center; }
+
+    .brochure-cover-lines {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .bcl {
+      height: 3px;
+      border-radius: 4px;
+      opacity: 0.55;
+    }
+    .bcl-1 { background: linear-gradient(90deg, #38bdf8, #a855f7); width: 85%; }
+    .bcl-2 { background: rgba(255,255,255,0.2); width: 65%; }
+    .bcl-3 { background: rgba(255,255,255,0.15); width: 75%; }
+    .bcl-4 { background: rgba(255,255,255,0.1); width: 50%; }
+
+    .brochure-pages-hint {
+      position: absolute;
+      bottom: 0.75rem;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.35);
+      text-transform: uppercase;
+    }
+
+    .brochure-info-col {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .brochure-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #fff;
+      margin: 0 0 0.4rem;
+      letter-spacing: -0.02em;
+    }
+
+    .brochure-subtitle {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      margin: 0 0 1.5rem;
+      line-height: 1.55;
+    }
+
+    .brochure-highlights {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .brochure-highlights li {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.78);
+      font-weight: 500;
+    }
+
+    .bh-icon { font-size: 1rem; flex-shrink: 0; }
+
+    .btn-brochure-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.85rem 1.8rem;
+      background: linear-gradient(135deg, var(--brand-blue), var(--brand-purple));
+      color: #fff;
+      border-radius: 100px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      letter-spacing: -0.01em;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s;
+      box-shadow: 0 4px 20px rgba(56,189,248,0.25), 0 2px 8px rgba(0,0,0,0.3);
+    }
+
+    .btn-brochure-download:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(56,189,248,0.4), 0 4px 16px rgba(0,0,0,0.4);
+      opacity: 0.93;
+    }
+
+    .brochure-meta {
+      margin: 0.85rem 0 0;
+      font-size: 0.76rem;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.02em;
+    }
+
+    @media (max-width: 680px) {
+      .brochure-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 2rem 1.25rem;
+        gap: 2rem;
+      }
+      .brochure-highlights { align-items: flex-start; text-align: left; }
+      .brochure-meta { text-align: center; }
+    }
+
     /* === FAQ === */
     .faq-section {
       padding: 4rem 2rem;
@@ -3180,6 +3373,50 @@
       </div>
     </section>
     END PRICING SECTION -->
+
+    <!-- Brochure Download Section -->
+    <section class="brochure-section reveal" id="brochure">
+      <p class="hero-feature-tag tag-blue" style="margin-bottom:1.5rem;">📄 Complete Feature Guide</p>
+      <h2 class="section-title" style="margin-bottom:0.5rem;">Everything Iddu Can Do,<br><span class="gradient-text">In One Beautiful Guide</span></h2>
+      <p style="color:var(--text-secondary);text-align:center;max-width:520px;margin:0 auto 3rem;font-size:1rem;line-height:1.6;">
+        Explore every feature, see real screenshots, and understand how Iddu fits into your family's life — all in a single downloadable PDF.
+      </p>
+      <div class="brochure-card">
+        <div class="brochure-preview-col">
+          <div class="brochure-cover-glow"></div>
+          <div class="brochure-cover">
+            <div class="brochure-cover-inner">
+              <div class="brochure-cover-logo">
+                <span class="gradient-text" style="font-size:2rem;font-weight:900;letter-spacing:-1px;">iddu</span>
+              </div>
+              <div class="brochure-cover-lines">
+                <div class="bcl bcl-1"></div>
+                <div class="bcl bcl-2"></div>
+                <div class="bcl bcl-3"></div>
+                <div class="bcl bcl-4"></div>
+              </div>
+              <div class="brochure-pages-hint">17 pages · 8 MB</div>
+            </div>
+          </div>
+        </div>
+        <div class="brochure-info-col">
+          <h3 class="brochure-title">Iddu — Product Brochure</h3>
+          <p class="brochure-subtitle">A full visual walkthrough of Iddu's AI-powered appointment experience.</p>
+          <ul class="brochure-highlights">
+            <li><span class="bh-icon">🤖</span> AI voice calling — how it works end-to-end</li>
+            <li><span class="bh-icon">👨‍👩‍👧</span> Family Mode — manage everyone's care in one place</li>
+            <li><span class="bh-icon">📅</span> Smart calendar sync &amp; appointment tracking</li>
+            <li><span class="bh-icon">🔒</span> Privacy-first design on AWS serverless</li>
+            <li><span class="bh-icon">📊</span> Real app screenshots &amp; feature deep-dives</li>
+          </ul>
+          <a class="btn-brochure-download" href="assets/iddu-brochure-v6.pdf" download="Iddu-Product-Brochure.pdf" target="_blank">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Brochure (PDF)
+          </a>
+          <p class="brochure-meta">Free · No sign-up required · Opens in any PDF viewer</p>
+        </div>
+      </div>
+    </section>
 
     <!-- Founder Story -->
     <section class="founder-section reveal">
