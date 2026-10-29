@@ -91,6 +91,45 @@ No replacement text was added — just uncomment the block.
 
 ---
 
+### 7. Footer — "Iddu Technologies LLC"
+**Search label:** `FOOTER HIDDEN TEMPORARILY`  
+**Location:** Bottom of `index.html`, just before `</body>` (~line 3526)  
+**What to restore:** Uncomment the entire `<footer>` block:
+```html
+<footer>
+  <div class="footer-links">
+    <a href="/privacy.html">Privacy Policy</a>
+    <a href="/terms.html">Terms of Service</a>
+    <a href="mailto:admin@iddu.app">Contact Us</a>
+  </div>
+  <p class="copyright">&copy;
+    <script>document.write(new Date().getFullYear())</script> Iddu Technologies LLC. All rights reserved.
+  </p>
+</footer>
+```
+
+---
+
+### 8. Privacy Policy — "Last Updated" date
+**File:** `privacy.html` line ~137  
+**What to restore:**
+```html
+<p class="last-updated">Last Updated: March 7, 2026</p>
+```
+*(Currently shows October 17, 2026 — revert to March 7, 2026)*
+
+---
+
+### 9. Terms of Service — "Last Updated" date
+**File:** `terms.html` line ~138  
+**What to restore:**
+```html
+<p class="last-updated">Last Updated: March 7, 2026</p>
+```
+*(Currently shows October 17, 2026 — revert to March 7, 2026)*
+
+---
+
 ## Branch push order (always follow this)
 
 ```
